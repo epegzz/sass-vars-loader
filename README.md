@@ -1,6 +1,6 @@
 # A SASS vars loader for Webpack
 
-Load global SASS vars from JS files, JSON files or JS objects.
+Load global SASS vars from JS/JSON files or from Webpack config.
 
 
 ## Install
@@ -9,7 +9,7 @@ Load global SASS vars from JS files, JSON files or JS objects.
 npm install @epegzz/sass-vars-loader --save-dev
 ```
 
-## Usage with JS object
+## Usage with passing vars directly in webpack config
 
 Simply pass the SASS vars as plain JS object to the `sassVars` config property:
 
@@ -29,7 +29,7 @@ sassVars: {
 }
 ```
 
-## Usage with JS or JSON files
+## Usage with loading vars from JS or JSON files
 
 Pass filenames as array to the `sassVars` config object:
 
