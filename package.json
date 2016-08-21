@@ -1,0 +1,17 @@
+{
+  "name": "@epegzz/sass-vars-loader",
+  "version": "1.0.0",
+  "author": "Daniel Schäfer <epegzz@gmail.com>",
+  "description": "A sass vars loader module for webpack. Supports JS or JSON files and plain JS objects.",
+  "files": ["index.js"],
+  "dependencies": {
+    "loader-utils": "~0.2.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epegzz/sass-vars-loader"
+  },
+  "keywords": [
+    "scss", "sass", "js", "json", "vars", "variables", "webpack", "loader"
+  ]
+}

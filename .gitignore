@@ -1,0 +1,12 @@
+# Webstorm
+.idea
+
+# OSX
+.DS_Store
+
+# VIM
+*.swp
+*.un~
+
+# NPM
+npm-debug.log
