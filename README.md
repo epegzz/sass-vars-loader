@@ -39,16 +39,15 @@ Pass filenames as array to the `sassVars` config object:
 loader: ExtractTextPlugin.extract('style', 'css!sass!sass-vars')
 sassVars: {
   files: [
-    path.resolve(__dirname, '/path/to/breackpoints.js'), // JS
+    path.resolve(__dirname, '/path/to/breakpoints.js'), // JS
     path.resolve(__dirname, '/path/to/colors.json'), // JSON
   ]
 }
 ```
 
-Example JS and JSON Files:
+With `breakpoints.js`:
 
 ```javascript
-// breakpoints.js
 const breakpoints = {
   small: '300px',
   medium: '600px',
@@ -56,8 +55,9 @@ const breakpoints = {
 module.exports = { breakpoints };
 ```
 
+And `colors.json`:
+
 ```json
-// colors.json
 {
   "colors": {
     "error": "red"
@@ -65,7 +65,20 @@ module.exports = { breakpoints };
 }
 ```
 
+This will result in the following SASS vars being available in all SASS files:
 
-# Acknowledgment
+```scss
+$breakpoints: (
+  small: 300px,
+  medium: 600px,
+);
+
+$colors: (
+  error: red,
+);
+```
+
+
+# Acknowledgments
 
 SASS var generator shamelessly copied from [Kasu/jsonToSassVars.js](https://gist.github.com/Kasu/ea4f4861a81e626ea308)
