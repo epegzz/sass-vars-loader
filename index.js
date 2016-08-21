@@ -8,7 +8,6 @@ const loader = function(content)
   this.cacheable();
 
   const config = loaderUtils.getLoaderConfig(this, 'sassVars');
-  console.log('-----config:', config);
 
   const vars = {};
   if (config.files) {
@@ -59,7 +58,6 @@ const loader = function(content)
     return sass;
   }
 
-  console.log('-----', vars, jsToSass(vars));
   return [jsToSass(vars), content].join('\n');
 };
 
