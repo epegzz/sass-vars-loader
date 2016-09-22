@@ -10,3 +10,4 @@
 
 # NPM
 npm-debug.log
+.npmrc
