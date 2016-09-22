@@ -15,7 +15,7 @@ Simply pass the SASS vars as plain JS object to the `sassVars` config property:
 
 ```javascript
 // webpack.js
-loader: ExtractTextPlugin.extract('style', 'css!sass!sass-vars')
+loader: ExtractTextPlugin.extract('style', 'css!sass!@epegzz/sass-vars-loader')
 sassVars: {
   vars: {
     breakpoints: {
@@ -36,7 +36,7 @@ Pass filenames as array to the `sassVars` config object:
 
 ```javascript
 // webpack.js
-loader: ExtractTextPlugin.extract('style', 'css!sass!sass-vars')
+loader: ExtractTextPlugin.extract('style', 'css!sass!@epegzz/sass-vars-loader')
 sassVars: {
   files: [
     path.resolve(__dirname, '/path/to/breakpoints.js'), // JS
