@@ -27,7 +27,7 @@ const loader = function(content)
   }
 
   if (config.vars) {
-    Object.assign(vars, config.config);
+      Object.assign(vars, JSON.parse(config.vars));
   }
 
   function jsToSass (obj) {
