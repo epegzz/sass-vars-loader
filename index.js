@@ -27,7 +27,7 @@ const loader = function(content)
   }
 
   if (config.vars) {
-		if(typeof config.vars === 'object') {
+    if(typeof config.vars === 'object') {
       Object.assign(vars, config.vars);
     } else {
       Object.assign(vars, JSON.parse(config.vars));
