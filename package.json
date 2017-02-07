@@ -3,7 +3,9 @@
   "version": "1.0.3",
   "author": "Daniel Schäfer <epegzz@gmail.com>",
   "description": "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "loader-utils": "~0.2.11"
   },
@@ -11,7 +13,21 @@
     "type": "git",
     "url": "https://github.com/epegzz/sass-vars-loader"
   },
+  "scripts": {
+    "test": "jest",
+    "watch-test": "jest --watch"
+  },
   "keywords": [
-    "scss", "sass", "js", "json", "vars", "variables", "webpack", "loader"
-  ]
+    "scss",
+    "sass",
+    "js",
+    "json",
+    "vars",
+    "variables",
+    "webpack",
+    "loader"
+  ],
+  "devDependencies": {
+    "jest": "^18.1.0"
+  }
 }
