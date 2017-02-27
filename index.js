@@ -3,6 +3,7 @@
 const loaderUtils = require('loader-utils');
 const fs = require('fs');
 const convert = require('./convert');
+const requireFresh = require('requirefresh');
 
 const loader = function(content)
 {
@@ -22,7 +23,7 @@ const loader = function(content)
         Object.assign(vars, JSON.parse(fs.readFileSync(path, 'utf8')));
       }
       if (path.endsWith('.js')) {
-        Object.assign(vars, require(path));
+        Object.assign(vars, requireFresh(path));
       }
     })
   }
