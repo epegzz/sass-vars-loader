@@ -82,6 +82,77 @@ module.exports = {
 ```
 
 
+with `app/colors.json`
+```json
+{
+  "blueColor": "blue",
+  "redColor": "red"
+}
+```
+
+and `app/backgrounds.js`
+```js
+module.exports = {
+  grayBackgroundColor: 'gray',
+  whiteBackgroundColor: 'white',
+};
+```
+
+### Usage with Extract Text Plugin
+
+With the [Extract Text Plugin](https://github.com/webpack-contrib/extract-text-webpack-plugin) the webpack.config.js changes slightly:
+```javascript
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+  entry: './app/index.js',
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: ExtractTextPlugin.extract({
+        fallback: "style-loader",
+        use: [{
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader", // compiles Sass to CSS
+          options: {
+            includePaths: ["app/styles.scss"],
+          },
+        }, {
+          loader: "@epegzz/sass-vars-loader", // read Sass vars from file or options
+          options: {
+            // Option 1) Specify vars here
+            vars: {
+              bodyFontSize: '21px',
+    
+              // Nesting is also possible (use map_get to read them in scss)!
+              borders: {
+                heavy: '5px solid black',
+                thin: '1px solid gray',
+              },
+            },
+            // Option 2) Load vars from JSON or Javascript file
+            files: [
+              path.resolve(__dirname, 'app/colors.json'),
+              path.resolve(__dirname, 'app/backgrounds.js'),
+            ],
+          },
+        }],
+      })
+    }],
+  },
+  plugins: [
+    new ExtractTextPlugin("styles.css"),
+  ],
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+}
+```
+
+
 # Acknowledgments
 
 SASS var generator shamelessly copied from [Kasu/jsonToSassVars.js](https://gist.github.com/Kasu/ea4f4861a81e626ea308)
