@@ -11,9 +11,14 @@ npm install @epegzz/sass-vars-loader --save-dev
 
 ## Usage
 
-The following files can all be found in the `example` directory, which contains a fully functional example of how to use the sass-vars-loader.
+The `example` directory contains a fully functional example project.
 
-The example projects uses `sass-vars-loader` to inject vars into sass files. In this case `app/styles.scss`:
+It uses `sass-vars-loader` to inject vars into sass files in 3 different ways:
+ * via Javascript file
+ * via JSON file
+ * via webpack config
+
+In the file `app/styles.scss` the following vars were injected in one of those 3 ways: `$bodyFontSize`, `$borders`, `$blueColor`, `$grayBackgroundColor`:
 
 ```sass
 body {
@@ -31,8 +36,24 @@ body {
 
 ```
 
+with `app/colors.json`
+```json
+{
+  "blueColor": "blue",
+  "redColor": "red"
+}
+```
 
-Take a look at the `sass-vars-loader` section in `webpack.config.js` to see how they were loaded: 
+and `app/backgrounds.js`
+```js
+module.exports = {
+  grayBackgroundColor: 'gray',
+  whiteBackgroundColor: 'white',
+};
+```
+
+
+Take a look at the `sass-vars-loader` section in `webpack.config.js` to see how this was done: 
  
 
 ```javascript
@@ -79,23 +100,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
 }
-```
-
-
-with `app/colors.json`
-```json
-{
-  "blueColor": "blue",
-  "redColor": "red"
-}
-```
-
-and `app/backgrounds.js`
-```js
-module.exports = {
-  grayBackgroundColor: 'gray',
-  whiteBackgroundColor: 'white',
-};
 ```
 
 ### Usage with Extract Text Plugin
