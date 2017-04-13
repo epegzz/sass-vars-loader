@@ -1,6 +1,6 @@
 # A SASS vars loader for Webpack
 
-Read sass vars from Javascript files, from JSON files or from the Webpack config.
+Reads sass vars from Javascript files, from JSON files or from the Webpack config.
 
 
 ## Install
