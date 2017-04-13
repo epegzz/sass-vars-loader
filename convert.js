@@ -34,7 +34,7 @@ function formatValue(value) {
       prefix: '',
       suffix: ',',
       suffixLastItem: false,
-    }
+    };
     return '(\n' + objToValue(value, opts) + '\n)';
   }
 

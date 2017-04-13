@@ -3,6 +3,7 @@
 const loaderUtils = require('loader-utils');
 const fs = require('fs');
 const convert = require('./convert');
+const path = require('path');
 
 const loader = function(content)
 {
@@ -16,12 +17,12 @@ const loader = function(content)
       config.files = [config.files];
     }
     config.files.forEach((path) => {
-      path = path.replace(/["']/g, '');
-      this.addDependency(path);
       if (path.endsWith('.json')) {
         Object.assign(vars, JSON.parse(fs.readFileSync(path, 'utf8')));
       }
       if (path.endsWith('.js')) {
+        const resolvedFilePath = path.resolve(path.replace(/["']/g, ''));
+        delete require.cache[resolvedFilePath];
         Object.assign(vars, require(path));
       }
     })
