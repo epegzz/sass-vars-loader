@@ -4,9 +4,10 @@
   "author": "Daniel Schäfer <epegzz@gmail.com>",
   "description": "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
   "files": [
-    "index.js",
-    "convert.js"
+    "src/index.js",
+    "src/convert.js"
   ],
+  "main": "src/index.js",
   "dependencies": {
     "loader-utils": "~0.2.11"
   },

@@ -16,14 +16,14 @@ const loader = function(content)
     if (!Array.isArray(config.files)) {
       config.files = [config.files];
     }
-    config.files.forEach((path) => {
-      if (path.endsWith('.json')) {
-        Object.assign(vars, JSON.parse(fs.readFileSync(path, 'utf8')));
+    config.files.forEach((filepath) => {
+      if (filepath.endsWith('.json')) {
+        Object.assign(vars, JSON.parse(fs.readFileSync(filepath, 'utf8')));
       }
-      if (path.endsWith('.js')) {
-        const resolvedFilePath = path.resolve(path.replace(/["']/g, ''));
+      if (filepath.endsWith('.js')) {
+        const resolvedFilePath = path.resolve(filepath.replace(/["']/g, ''));
         delete require.cache[resolvedFilePath];
-        Object.assign(vars, require(path));
+        Object.assign(vars, require(filepath));
       }
     })
   }
