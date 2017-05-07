@@ -1,6 +1,9 @@
-# A SASS vars loader for Webpack
+# A Sass vars loader for Webpack
 
-Reads sass vars from Javascript files, from JSON files or from the Webpack config.
+This loader makes it possible to load Sass variables from:
+* JSON files
+* Javascript files
+* Webpack configuration file
 
 
 ## Install
@@ -159,4 +162,4 @@ module.exports = {
 
 # Acknowledgments
 
-SASS var generator shamelessly copied from [Kasu/jsonToSassVars.js](https://gist.github.com/Kasu/ea4f4861a81e626ea308)
+Sass var generator shamelessly copied from [Kasu/jsonToSassVars.js](https://gist.github.com/Kasu/ea4f4861a81e626ea308)
