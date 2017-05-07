@@ -9,7 +9,7 @@ const loader = function(content)
 {
   this.cacheable();
 
-  const config = loaderUtils.getLoaderConfig(this, 'sassVars');
+  const config = loaderUtils.getOptions(this);
 
   const vars = {};
   if (config.files) {
