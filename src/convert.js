@@ -26,7 +26,7 @@ function formatValue(value) {
     var result = value.map(function(v) {
       return formatValue(v);
     });
-    return result.join(', ');
+    return '(' +  result.join(', ') + ')';
   }
 
   if (typeof value === 'object') {
