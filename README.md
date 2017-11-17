@@ -1,5 +1,5 @@
 <h1 align="center">Sass Vars Loader</h1>
-
+<h2 align="center">Use vars in your SCSS files provided via Webpack</h2>
 <p align="center">
   <a href="https://travis-ci.org/epegzz/sass-vars-loader">
     <img alt="Travis" src="https://img.shields.io/travis/epegzz/sass-vars-loader.svg?style=flat-square">
@@ -18,8 +18,8 @@
   </a>
 </p>
 
+<br/>
 
-# Use vars in your SCSS files provided via Webpack
 
 This loader makes it possible to load Sass variables from:
 * JSON files
