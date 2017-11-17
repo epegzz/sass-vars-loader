@@ -3,6 +3,8 @@
   "version": "2.0.2",
   "author": "Daniel Schäfer <epegzz@gmail.com>",
   "description": "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
+  "engines" : { "node" : ">=6.4.0" },
+  "engineStrict" : true,
   "files": [
     "src/index.js",
     "src/convert.js"
