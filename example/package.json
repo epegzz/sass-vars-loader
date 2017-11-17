@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@epegzz/sass-vars-loader": "^1.1.0",
+    "@epegzz/sass-vars-loader": "^2.0.2",
     "css-loader": "^0.28.0",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
@@ -20,5 +20,6 @@
     "webpack": "^2.3.3"
   },
   "dependencies": {
+    "lodash": "^4.17.4"
   }
 }
