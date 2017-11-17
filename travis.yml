@@ -1,0 +1,24 @@
+---
+language: node_js
+node_js:
+  - 6
+  - stable
+dist: precise
+cache:
+  yarn: true
+  directories:
+  - node_modules
+env:
+  - NODE_ENV=development
+  - NODE_ENV=production
+matrix:
+  fast_finish: true
+install:
+  - NODE_ENV=development yarn install
+before_script:
+  - yarn check-deps
+  - if [ "${NODE_ENV}" = "production" ]; then yarn build; fi
+script:
+  - yarn lint
+  - yarn test -- --runInBand
+  - if [ "${NODE_ENV}" = "development" ]; then yarn coverage; fi
