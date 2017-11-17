@@ -3,7 +3,7 @@
 This loader makes it possible to load Sass variables from:
 * JSON files
 * Javascript files
-* Webpack configuration file
+* Your Webpack config file
 
 
 ## Install
@@ -14,151 +14,191 @@ npm install @epegzz/sass-vars-loader --save-dev
 
 ## Usage
 
-The `example` directory contains a fully functional example project.
+Look at the [Example Webpack Config File](./example/webpack.config.js) to see how to use this
+loader in conjunction with [style-loader](https://github.com/webpack-contrib/style-loader) and
+[css-loader](https://github.com/webpack-contrib/css-loader)
 
-It uses `sass-vars-loader` to inject vars into sass files in 3 different ways:
- * via Javascript file
- * via JSON file
- * via webpack config
+### Option 1: Inline Sass vars in the webpack config
 
-In the file `app/styles.scss` the following vars were injected in one of those 3 ways: `$bodyFontSize`, `$borders`, `$blueColor`, `$grayBackgroundColor`:
+```scss
+// styles.css:
 
-```sass
-body {
-
-  // Option 1) Read from webpack config
-  font-size: $bodyFontSize;
-
-  // Nesting is also possible!
-  border: map_get($borders, heavy);
-
-  // Option 2) Read from JSON or Javascript file 
-  color: $blueColor; // from colors.json
-  background-color: $grayBackgroundColor; // from background.js
-}
-
-```
-
-with `app/colors.json`
-```json
-{
-  "blueColor": "blue",
-  "redColor": "red"
+.some-class {
+  background: $greenFromWebpackConfig;
 }
 ```
 
-and `app/backgrounds.js`
 ```js
+// webpack.config.js
+
+var path = require('path');
+
 module.exports = {
-  grayBackgroundColor: 'gray',
-  whiteBackgroundColor: 'white',
+  entry: './src/index.js',
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: [
+        // Inserts all imported styles into the html document
+        { loader: "style-loader" },
+
+        // Translates CSS into CommonJS
+        { loader: "css-loader" },
+
+        // Compiles Sass to CSS
+        { loader: "sass-loader", options: { includePaths: ["app/styles.scss"] } },
+
+        // Reads Sass vars from files or inlined in the options property
+        { loader: "@epegzz/sass-vars-loader", options: {
+          // Option 1) Specify vars here
+          vars: {
+            greenFromWebpackConfig: '#0f0'
+          }
+        }
+      }]
+    }]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+
+### Option 2: Load Sass vars from JSON file
+
+```js
+// config/sassVars.json
+
+{
+  "purpleFromJSON": "purple"
+}
+```
+
+```scss
+// styles.css:
+
+.some-class {
+  background: $purpleFromJSON;
+}
+```
+
+```js
+// webpack.config.js
+
+var path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: [
+        // Inserts all imported styles into the html document
+        { loader: "style-loader" },
+
+        // Translates CSS into CommonJS
+        { loader: "css-loader" },
+
+        // Compiles Sass to CSS
+        { loader: "sass-loader", options: { includePaths: ["app/styles.scss"] } },
+
+        // Reads Sass vars from files or inlined in the options property
+        { loader: "@epegzz/sass-vars-loader", options: {
+          files: [
+            // Option 2) Load vars from JSON file
+            path.resolve(__dirname, 'config/sassVars.json')
+          ]
+        }
+      }]
+    }]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
 };
 ```
 
 
-Take a look at the `sass-vars-loader` section in `webpack.config.js` to see how this was done: 
- 
+### Option 3: Load Sass vars from Javascript file
 
-```javascript
+```js
+// config/sassVars.js
+
+module.exports = {
+  blueFromJS: 'blue'
+};
+```
+
+```scss
+// styles.css:
+
+.some-class {
+  background: $blueFromJavascript;
+}
+```
+
+```js
+// webpack.config.js
+
 var path = require('path');
 
 module.exports = {
-  entry: './app/index.js',
+  entry: './src/index.js',
   module: {
     rules: [{
       test: /\.scss$/,
-      use: [{
-        loader: "style-loader" // creates style nodes from JS strings
-      }, {
-        loader: "css-loader" // translates CSS into CommonJS
-      }, {
-        loader: "sass-loader", // compiles Sass to CSS
-        options: {
-          includePaths: ["app/styles.scss"],
-        },
-      }, {
-        loader: "@epegzz/sass-vars-loader", // read Sass vars from file or options
-        options: {
-          // Option 1) Specify vars here
-          vars: {
-            bodyFontSize: '21px',
+      use: [
+        // Inserts all imported styles into the html document
+        { loader: "style-loader" },
 
-            // Nesting is also possible (use map_get to read them in scss)!
-            borders: {
-              heavy: '5px solid black',
-              thin: '1px solid gray',
-            },
-          },
-          // Option 2) Load vars from JSON or Javascript file
+        // Translates CSS into CommonJS
+        { loader: "css-loader" },
+
+        // Compiles Sass to CSS
+        { loader: "sass-loader", options: { includePaths: ["app/styles.scss"] } },
+
+        // Reads Sass vars from files or inlined in the options property
+        { loader: "@epegzz/sass-vars-loader", options: {
           files: [
-            path.resolve(__dirname, 'app/colors.json'),
-            path.resolve(__dirname, 'app/backgrounds.js'),
-          ],
-        },
-      }],
-    }],
+            // Option 3) Load vars from Javascript file
+            path.resolve(__dirname, 'config/sassVars.js')
+          ]
+        }
+      }]
+    }]
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-}
+    path: path.resolve(__dirname, 'dist')
+  }
+};
 ```
 
-### Usage with Extract Text Plugin
 
-With the [Extract Text Plugin](https://github.com/webpack-contrib/extract-text-webpack-plugin) the webpack.config.js changes slightly:
-```javascript
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+### Pro Tipp: Nested Vars!
+
+Use [map_get](http://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method)
+in order to use objects as Sass vars:
+
+```js
+// config/sassVars.js
 
 module.exports = {
-  entry: './app/index.js',
-  module: {
-    rules: [{
-      test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: "style-loader",
-        use: [{
-          loader: "css-loader" // translates CSS into CommonJS
-        }, {
-          loader: "sass-loader", // compiles Sass to CSS
-          options: {
-            includePaths: ["app/styles.scss"],
-          },
-        }, {
-          loader: "@epegzz/sass-vars-loader", // read Sass vars from file or options
-          options: {
-            // Option 1) Specify vars here
-            vars: {
-              bodyFontSize: '21px',
-    
-              // Nesting is also possible (use map_get to read them in scss)!
-              borders: {
-                heavy: '5px solid black',
-                thin: '1px solid gray',
-              },
-            },
-            // Option 2) Load vars from JSON or Javascript file
-            files: [
-              path.resolve(__dirname, 'app/colors.json'),
-              path.resolve(__dirname, 'app/backgrounds.js'),
-            ],
-          },
-        }],
-      })
-    }],
-  },
-  plugins: [
-    new ExtractTextPlugin("styles.css"),
-  ],
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-}
+  lightTheme: {
+    background: 'white'
+  }
+};
 ```
 
+```scss
+// styles.css:
+
+.some-class {
+  background: map_get($lightTheme, background);
+}
+```
 
 # Acknowledgments
 
