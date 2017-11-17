@@ -1,4 +1,25 @@
-# A Sass vars loader for Webpack
+<h2 align="center">Sass Vars Loader</h2>
+
+<p align="center">
+  <a href="https://travis-ci.org/epegzz/sass-vars-loader">
+    <img alt="Travis" src="https://img.shields.io/travis/epegzz/sass-vars-loader.svg?style=flat-square">
+  </a>
+  <a href="https://codecov.io/gh/prettier/prettier">
+    <img alt="Codecov" src="https://img.shields.io/codecov/c/github/epegzz/sass-vars-loader.svg?style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package/@epegzz/sass-vars-loader">
+    <img alt="npm version" src="https://img.shields.io/npm/v/@epegzz/sass-vars-loader.svg?style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package//@epegzz/sass-vars-loader">
+    <img alt="npm version" src="https://img.shields.io/npm/dm/@epegzz/sass-vars-loader.svg?style=flat-square">
+  </a>
+  <a href="#badge">
+    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
+  </a>
+</p>
+
+
+## A Sass vars loader for Webpack
 
 This loader makes it possible to load Sass variables from:
 * JSON files
@@ -6,19 +27,19 @@ This loader makes it possible to load Sass variables from:
 * Your Webpack config file
 
 
-## Install
+### Install
 
 ```sh
 npm install @epegzz/sass-vars-loader --save-dev
 ```
 
-## Usage
+### Usage
 
 Look at the [Example Webpack Config File](./example/webpack.config.js) to see how to use this
 loader in conjunction with [style-loader](https://github.com/webpack-contrib/style-loader) and
 [css-loader](https://github.com/webpack-contrib/css-loader)
 
-### Option 1: Inline Sass vars in the webpack config
+#### Option 1: Inline Sass vars in the webpack config
 
 ```scss
 // styles.css:
@@ -65,7 +86,7 @@ module.exports = {
 };
 ```
 
-### Option 2: Load Sass vars from JSON file
+#### Option 2: Load Sass vars from JSON file
 
 ```js
 // config/sassVars.json
@@ -121,7 +142,7 @@ module.exports = {
 ```
 
 
-### Option 3: Load Sass vars from Javascript file
+#### Option 3: Load Sass vars from Javascript file
 
 ```js
 // config/sassVars.js
@@ -177,7 +198,7 @@ module.exports = {
 ```
 
 
-### Pro Tipp: Nested Vars!
+#### Pro Tipp: Nested Vars!
 
 Use [map_get](http://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method)
 in order to use objects as Sass vars:
@@ -200,6 +221,6 @@ module.exports = {
 }
 ```
 
-# Acknowledgments
+##### Acknowledgments
 
 Sass var generator shamelessly copied from [Kasu/jsonToSassVars.js](https://gist.github.com/Kasu/ea4f4861a81e626ea308)
