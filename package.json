@@ -20,8 +20,14 @@
   "scripts": {
     "test": "jest",
     "watch-test": "jest --watch",
+    "coverage": "jest && codecov",
     "lint": "eslint src/**/*.js",
     "lint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom" : ["src/**/*.js"]
   },
   "keywords": [
     "scss",
