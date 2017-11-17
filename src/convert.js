@@ -1,19 +1,11 @@
-'use strict';
-
-var opts = {
-  prefix: '',
-  suffix: '',
-  suffixLastItem: true,
-};
-
 function objToValue(obj, opts) {
-  var keys = Object.keys(obj);
-  var fields = keys.map(function(key) {
-    var value = formatValue(obj[key]);
-    return opts.prefix + key + ":" + value;
+  const keys = Object.keys(obj);
+  const fields = keys.map(function(key) {
+    const value = formatValue(obj[key]);
+    return opts.prefix + key + ':' + value;
   });
 
-  var result = fields.join(opts.suffix + "\n");
+  const result = fields.join(`${opts.suffix}\n`);
   if (opts.suffixLastItem) {
     return result + opts.suffix;
   }
@@ -23,19 +15,17 @@ function objToValue(obj, opts) {
 
 function formatValue(value) {
   if (value instanceof Array) {
-    var result = value.map(function(v) {
-      return formatValue(v);
-    });
-    return '(' +  result.join(', ') + ')';
+    const result = value.map(formatValue);
+    return `(${result.join(', ')})`;
   }
 
   if (typeof value === 'object') {
-    var opts = {
+    const opts = {
       prefix: '',
       suffix: ',',
-      suffixLastItem: false,
+      suffixLastItem: false
     };
-    return '(\n' + objToValue(value, opts) + '\n)';
+    return `(\n${objToValue(value, opts)}\n)`;
   }
 
   if (typeof value === 'string') {
@@ -46,4 +36,3 @@ function formatValue(value) {
 }
 
 module.exports = objToValue;
-

@@ -17,7 +17,9 @@
   },
   "scripts": {
     "test": "jest",
-    "watch-test": "jest --watch"
+    "watch-test": "jest --watch",
+    "lint": "eslint src/**/*.js",
+    "lint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "keywords": [
     "scss",
@@ -30,6 +32,13 @@
     "loader"
   ],
   "devDependencies": {
-    "jest": "^18.1.0"
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-es2015": "^1.1.0",
+    "eslint-config-prettier": "^2.7.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "jest": "^18.1.0",
+    "prettier": "^1.8.2"
   }
 }

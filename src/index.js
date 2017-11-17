@@ -5,8 +5,7 @@ const fs = require('fs');
 const convert = require('./convert');
 const path = require('path');
 
-const loader = function(content)
-{
+module.exports = function(content) {
   this.cacheable();
 
   const config = loaderUtils.getOptions(this);
@@ -16,7 +15,7 @@ const loader = function(content)
     if (!Array.isArray(config.files)) {
       config.files = [config.files];
     }
-    config.files.forEach((filepath) => {
+    config.files.forEach(filepath => {
       if (filepath.endsWith('.json')) {
         Object.assign(vars, JSON.parse(fs.readFileSync(filepath, 'utf8')));
       }
@@ -25,22 +24,22 @@ const loader = function(content)
         delete require.cache[resolvedFilePath];
         Object.assign(vars, require(filepath));
       }
-    })
+    });
   }
 
   if (config.vars) {
-    if(typeof config.vars === 'object') {
+    if (typeof config.vars === 'object') {
       Object.assign(vars, config.vars);
     } else {
       Object.assign(vars, JSON.parse(config.vars));
     }
   }
 
-  function jsToSass (obj) {
+  function jsToSass(obj) {
     const opts = {
       prefix: '$',
       suffix: ';',
-      suffixLastItem: true,
+      suffixLastItem: true
     };
     var sass = convert(obj, opts);
     return sass;
@@ -48,5 +47,3 @@ const loader = function(content)
 
   return [jsToSass(vars), content].join('\n');
 };
-
-module.exports = loader;
