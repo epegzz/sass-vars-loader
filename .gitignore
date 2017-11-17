@@ -12,3 +12,7 @@
 npm-debug.log
 node_modules
 .npmrc
+*.log
+
+# coverage
+coverage
