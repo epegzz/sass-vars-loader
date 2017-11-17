@@ -1,0 +1,32 @@
+body {
+
+  // Option 1) Load vars from webpack config (from webpack.config.js)
+  .styles-from-webpack-config {
+    background: $greenFromWebpackConfig;
+  }
+
+  // Option 2) Load vars from JSON file (from config/sassVars.json)
+  .styles-from-json-file {
+    background: $purpleFromJSON;
+  }
+
+  // Option 3) Load vars from Javascript file (from config/sassVars.json)
+  .styles-from-js-file {
+    background: $blueFromJS;
+  }
+
+
+
+  div {
+    padding: 20px;
+    margin: 20px;
+  }
+  pre {
+    background: #ffffff3b;
+    padding: 20px;
+  }
+  h3 {
+    background: #ffffff69;
+    padding: 10px;
+  }
+}
