@@ -1,5 +1,5 @@
-<h2 align="center">Sass Vars Loader</h2>
-
+<h1 align="center">Sass Vars Loader</h1>
+<h3 align="center">Use vars in your SCSS files provided via Webpack</h3>
 <p align="center">
   <a href="https://travis-ci.org/epegzz/sass-vars-loader">
     <img alt="Travis" src="https://img.shields.io/travis/epegzz/sass-vars-loader.svg?style=flat-square">
@@ -18,28 +18,28 @@
   </a>
 </p>
 
+<br/>
 
-## A Sass vars loader for Webpack
 
-This loader makes it possible to load Sass variables from:
+This loader allows you to load Sass variables from:
 * JSON files
 * Javascript files
-* Your Webpack config file
+* Inlined in your Webpack config file
 
 
-### Install
+## Install
 
 ```sh
 npm install @epegzz/sass-vars-loader --save-dev
 ```
 
-### Usage
+## Usage
 
 Look at the [Example Webpack Config File](./example/webpack.config.js) to see how to use this
 loader in conjunction with [style-loader](https://github.com/webpack-contrib/style-loader) and
 [css-loader](https://github.com/webpack-contrib/css-loader)
 
-#### Option 1: Inline Sass vars in the webpack config
+### Option 1: Inline Sass vars in the webpack config
 
 ```scss
 // styles.css:
@@ -86,7 +86,7 @@ module.exports = {
 };
 ```
 
-#### Option 2: Load Sass vars from JSON file
+### Option 2: Load Sass vars from JSON file
 
 ```js
 // config/sassVars.json
@@ -142,7 +142,7 @@ module.exports = {
 ```
 
 
-#### Option 3: Load Sass vars from Javascript file
+### Option 3: Load Sass vars from Javascript file
 
 ```js
 // config/sassVars.js
@@ -198,7 +198,7 @@ module.exports = {
 ```
 
 
-#### Pro Tipp: Nested Vars!
+### Pro Tipp: Nested Vars!
 
 Use [map_get](http://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method)
 in order to use objects as Sass vars:
