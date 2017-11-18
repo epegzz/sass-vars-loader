@@ -1,6 +1,6 @@
 {
   "name": "@epegzz/sass-vars-loader",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": "Daniel Schäfer <epegzz@gmail.com>",
   "description": "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
   "engines": {

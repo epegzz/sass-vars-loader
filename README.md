@@ -145,7 +145,7 @@ module.exports = {
 // config/sassVars.js
 
 module.exports = {
-  blueFromJS: 'blue'
+  blueFromJavascript: 'blue'
 };
 ```
 
@@ -195,7 +195,7 @@ module.exports = {
 ```
 
 
-### Pro Tipp: Nested Vars!
+### Pro Tip: Nested Vars!
 
 Use [map_get](http://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method)
 in order to use objects as Sass vars:
@@ -205,7 +205,12 @@ in order to use objects as Sass vars:
 
 module.exports = {
   lightTheme: {
-    background: 'white'
+    background: 'white',
+    color: 'black'
+  },
+  darkTheme: {
+    background: 'black',
+    color: 'gray'
   }
 };
 ```
@@ -213,8 +218,11 @@ module.exports = {
 ```scss
 // styles.css:
 
+$theme: $lightTheme;
+
 .some-class {
-  background: map_get($lightTheme, background);
+  background: map_get($theme, background);
+  color: map_get($theme, color);
 }
 ```
 
