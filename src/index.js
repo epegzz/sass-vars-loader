@@ -16,6 +16,7 @@ module.exports = function(content) {
       config.files = [config.files];
     }
     config.files.forEach(filepath => {
+      this.addDependency(path.resolve(filepath));
       if (filepath.endsWith('.json')) {
         Object.assign(vars, JSON.parse(fs.readFileSync(filepath, 'utf8')));
       }
@@ -41,7 +42,7 @@ module.exports = function(content) {
       suffix: ';',
       suffixLastItem: true
     };
-    var sass = convert(obj, opts);
+    const sass = convert(obj, opts);
     return sass;
   }
 
