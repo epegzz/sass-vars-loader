@@ -4,7 +4,7 @@
   <a href="https://travis-ci.org/epegzz/sass-vars-loader">
     <img alt="Travis" src="https://img.shields.io/travis/epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
-  <a href="https://codecov.io/gh/prettier/prettier">
+  <a href="https://codecov.io/gh/epegzz/sass-vars-loader">
     <img alt="Codecov" src="https://img.shields.io/codecov/c/github/epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
   <a href="https://www.npmjs.com/package/@epegzz/sass-vars-loader">
