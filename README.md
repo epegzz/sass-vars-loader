@@ -225,7 +225,3 @@ $theme: $lightTheme;
   color: map_get($theme, color);
 }
 ```
-
-##### Acknowledgments
-
-Sass var generator shamelessly copied from [Kasu/jsonToSassVars.js](https://gist.github.com/Kasu/ea4f4861a81e626ea308)

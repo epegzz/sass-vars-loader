@@ -2,36 +2,53 @@
   "name": "@epegzz/sass-vars-loader",
   "version": "2.2.1",
   "author": "Daniel Schäfer <epegzz@gmail.com>",
-  "description": "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
+  "description":
+    "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
+  "license": "MIT",
   "engines": {
-    "node": ">=6.4.0"
+    "node": ">=6.12.0"
   },
   "engineStrict": true,
-  "files": [
-    "src/index.js",
-    "src/convert.js"
-  ],
-  "main": "src/index.js",
-  "dependencies": {
-    "loader-utils": "~1.1.0"
-  },
+  "files": ["dist"],
+  "main": "src/sassVarsLoader.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/epegzz/sass-vars-loader"
   },
+  "eslintConfig": {
+    "extends": ["es2015", "plugin:jest/recommended"],
+    "plugins": ["prettier", "jest"],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "impliedStrict": true,
+        "experimentalObjectRestSpread": true
+      }
+    },
+    "env": {
+      "jest/globals": true
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true
+        }
+      ]
+    }
+  },
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "watch-test": "jest --watch",
     "coverage": "jest && codecov",
     "lint": "eslint src/**/*.js",
-    "lint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+    "lint-check":
+      "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ]
+    "collectCoverage": true
   },
   "keywords": [
     "scss",
@@ -43,6 +60,9 @@
     "webpack",
     "loader"
   ],
+  "dependencies": {
+    "loader-utils": "~1.1.0"
+  },
   "devDependencies": {
     "codecov": "^3.0.0",
     "eslint": "^4.11.0",
@@ -50,6 +70,7 @@
     "eslint-config-es2015": "^1.1.0",
     "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.3.2",
     "eslint-plugin-prettier": "^2.3.1",
     "jest": "^18.1.0",
     "prettier": "^1.8.2"
