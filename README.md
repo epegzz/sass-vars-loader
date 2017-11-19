@@ -14,7 +14,7 @@
     <img alt="npm version" src="https://img.shields.io/npm/dm/@epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
   <a target="_blank" href="https://david-dm.org/epegzz/sass-vars-loader">
-    <img alt="dependencies" src="https://img.shields.io/david/epegzz/sass-vars-loader.svg">
+    <img alt="dependencies" src="https://img.shields.io/david/epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
 </p>
 
