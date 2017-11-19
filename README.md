@@ -5,7 +5,7 @@
     <img alt="Travis" src="https://img.shields.io/travis/epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
   <a target="_blank" href="https://codeclimate.com/github/epegzz/sass-vars-loader/maintainability">
-    <img alt="Codecov" src="https://img.shields.io/codeclimate/maintainability/epegzz/sass-vars-loader.svg?style=flat-square">
+    <img alt="Maintainability" src="https://img.shields.io/codeclimate/maintainability/epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
   <a target="_blank" href="https://codecov.io/gh/epegzz/sass-vars-loader">
     <img alt="Codecov" src="https://img.shields.io/codecov/c/github/epegzz/sass-vars-loader.svg?style=flat-square">
