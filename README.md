@@ -1,5 +1,5 @@
 <h1 align="center">Sass Vars Loader</h1>
-<h3 align="center">Use vars in your SCSS files provided via Webpack</h3>
+<h3 align="center">Use external vars in your SCSS files</h3>
 <p align="center">
   <a target="_blank" href="https://travis-ci.org/epegzz/sass-vars-loader">
     <img alt="Travis" src="https://img.shields.io/travis/epegzz/sass-vars-loader.svg?style=flat-square">
