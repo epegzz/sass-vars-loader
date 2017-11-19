@@ -13,6 +13,9 @@
   <a href="https://www.npmjs.com/package/@epegzz/sass-vars-loader">
     <img alt="npm version" src="https://img.shields.io/npm/dm/@epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
+  <a href="https://david-dm.org/epegzz/sass-vars-loader">
+    <img alt="dependencies" src="https://david-dm.org/epegzz/sass-vars-loader/status.svg">
+  </a>
 </p>
 
 <br/>
