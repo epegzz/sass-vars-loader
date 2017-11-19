@@ -1,4 +1,4 @@
-const watchFilesForChanges = require('./watchFilesForChanges');
+import watchFilesForChanges from './watchFilesForChanges';
 
 const mockFiles = ['file1', 'file2', 'file3'];
 const mockLoader = {

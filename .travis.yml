@@ -13,4 +13,15 @@ install:
 script:
   - yarn lint
   - yarn test -- --runInBand
-  - if [ "${NODE_ENV}" = "development" ]; then yarn coverage; fi
+  - yarn coverage
+before_deploy:
+  - yarn build
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: epegzz@gmail.com
+  api_key:
+    secure: NjmMGjjkDLVwD8X0Y+eMitVMqEcounMChgBmLfUW+fOUNxN1NP9qUxRwK0mUu0Df9H5603mv5tJ2KsIFTqpKKB7/PpP9FxsVz5e0yLr1HCWQCETtf0s2iiSC5BO/HZGLW/6r+4qDBOV4jnaqjpLWXD2DQT/I20+vX7I2y3O8bMFEay+cMuW4PIQFoElXetr0VJ7exr8kziq6Ft00qRDXbZAGJV16oWY6HpB6pIox7K7tfgt5mQuqfFUBQ0MvwBOfAw1wyBuI25Jq8+PvFmp+Cfv+eFgBW7f3ouzSRrip7q+M/1MwrVNFVogPzMQMXMogchI8NZt0cskxUeExhxmC92de/C4mgsx3RrrNbGU8++mKm7eK0k4A66iBm75S7y7Hm0sxHn5JAHuGAzNykcV6nVLa8uYfD624PRw0JodK+/CRQUi/V6quECD8V/XQ/SSwKNRmhGzgHH/8vxWXvugRss4U7b8qLLYZ8iwAnInogkrzfr+PZdeYoSuFhFwmwzZ0oAb8nv5RTcHGanjLzNtXb3isrAbdPpElMJfRZruKMdVA8A4nrDy73czlrVVhTRcM4hXeuK8gAtyOWyznzjAiLXI91wBN6MQxir+5EAKDC6ASe7+rYFcPAPTuz4UhOGkJ8kE5ixI91mm5ne6O6rn1DkAmoWAISs1MjbOcZSCw2Mc=
+  on:
+    tags: true
+    repo: epegzz/sass-vars-loader

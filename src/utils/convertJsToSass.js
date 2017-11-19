@@ -1,4 +1,4 @@
-function convertJSToSass(obj, isNested) {
+function convertJsToSass(obj, isNested) {
   const prefix = isNested ? '' : '$';
   const suffix = isNested ? ',\n' : ';\n';
   const lastItemSuffix = isNested ? '' : ';\n';
@@ -15,7 +15,7 @@ function formatValue(value) {
   }
 
   if (typeof value === 'object') {
-    return `(\n${convertJSToSass(value, true)}\n)`;
+    return `(\n${convertJsToSass(value, true)}\n)`;
   }
 
   if (typeof value === 'string') {
@@ -25,4 +25,4 @@ function formatValue(value) {
   return JSON.stringify(value);
 }
 
-module.exports = convertJSToSass;
+export default convertJsToSass;

@@ -1,5 +1,5 @@
-const path = require('path');
-const readVarsFromJSONFiles = require('./readVarsFromJSONFiles');
+import path from 'path';
+import readVarsFromJSONFiles from './readVarsFromJSONFiles';
 
 const files = [
   path.resolve(__dirname, '../__mocks__/jsonVars1.json'),

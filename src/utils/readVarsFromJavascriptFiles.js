@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-module.exports = function(files) {
+export default function(files) {
   return files.reduce((vars, filepath) => {
     if (!filepath.endsWith('.js')) {
       return vars;
@@ -8,4 +6,4 @@ module.exports = function(files) {
     delete require.cache[filepath];
     return Object.assign(vars, require(filepath));
   }, {});
-};
+}

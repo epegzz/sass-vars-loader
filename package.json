@@ -1,19 +1,64 @@
 {
   "name": "@epegzz/sass-vars-loader",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "author": "Daniel Schäfer <epegzz@gmail.com>",
   "description":
     "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
+  "keywords": [
+    "scss",
+    "sass",
+    "js",
+    "json",
+    "vars",
+    "variables",
+    "webpack",
+    "loader"
+  ],
   "license": "MIT",
   "engines": {
-    "node": ">=6.12.0"
+    "node": ">=4"
   },
-  "engineStrict": true,
-  "files": ["dist"],
-  "main": "src/sassVarsLoader.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/epegzz/sass-vars-loader"
+  },
+  "engineStrict": true,
+  "main": "dist/sassVarsLoader.js",
+  "scripts": {
+    "test": "NODE_ENV=testing jest --verbose",
+    "watch-test": "NODE_ENV=testing jest --watch",
+    "coverage": "NODE_ENV=testing jest && codecov",
+    "build": "NODE_ENV=production babel src -d dist",
+    "lint": "NODE_ENV=testing eslint src/**/*.js",
+    "lint-check":
+    "NODE_ENV=testing eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
+  "babel": {
+    "plugins": ["transform-object-rest-spread"],
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "4"
+          },
+          "useBuiltIns": true,
+          "loose": true
+        }
+      ]
+    ],
+    "env": {
+      "production": {
+        "ignore": ["**/*.test.js", "__mocks__"]
+      },
+      "testing": {
+        "ignore": ["dist/**/*"]
+      }
+    }
   },
   "eslintConfig": {
     "extends": ["es2015", "plugin:jest/recommended"],
@@ -38,32 +83,14 @@
       ]
     }
   },
-  "scripts": {
-    "test": "jest --verbose",
-    "watch-test": "jest --watch",
-    "coverage": "jest && codecov",
-    "lint": "eslint src/**/*.js",
-    "lint-check":
-      "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
-  },
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true
-  },
-  "keywords": [
-    "scss",
-    "sass",
-    "js",
-    "json",
-    "vars",
-    "variables",
-    "webpack",
-    "loader"
-  ],
   "dependencies": {
     "loader-utils": "~1.1.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "codecov": "^3.0.0",
     "eslint": "^4.11.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -72,7 +99,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.3.2",
     "eslint-plugin-prettier": "^2.3.1",
-    "jest": "^18.1.0",
+    "jest": "^21.2.1",
     "prettier": "^1.8.2"
   }
 }

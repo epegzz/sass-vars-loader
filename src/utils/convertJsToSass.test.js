@@ -1,4 +1,4 @@
-const convertJsToSass = require('./convertJsToSass');
+import convertJsToSass from './convertJsToSass';
 
 it('Converts string', function() {
   const obj = { it: 'value' };
