@@ -29,9 +29,15 @@ This loader allows you to load Sass variables from:
 
 ## Install
 
+using npm
 ```sh
 npm install @epegzz/sass-vars-loader --save-dev
 ```
+using yarn
+```sh
+yarn add @epegzz/sass-vars-loader --dev
+```
+
 
 ## Usage
 
