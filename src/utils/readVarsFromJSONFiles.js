@@ -1,6 +1,6 @@
-const fs = require('fs');
+import fs from 'fs';
 
-module.exports = function(files) {
+export default function(files) {
   return files.reduce(
     (vars, filepath) =>
       Object.assign(
@@ -10,4 +10,4 @@ module.exports = function(files) {
       ),
     {}
   );
-};
+}

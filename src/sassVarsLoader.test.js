@@ -1,5 +1,5 @@
-const path = require('path');
-const sassVarsLoader = require('./sassVarsLoader');
+import path from 'path';
+import sassVarsLoader from './sassVarsLoader';
 
 let mockOptions;
 

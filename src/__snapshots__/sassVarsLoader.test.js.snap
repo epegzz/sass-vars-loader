@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`With vars from files Returns expected Sass contents 1`] = `
 "$value1FromJson:foo;
 $value2FromJson:foo;

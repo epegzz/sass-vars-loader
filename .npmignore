@@ -17,5 +17,12 @@ node_modules
 # coverage
 coverage
 
-#dist
-dist
+# non dist files
+coverage
+example
+src
+.travis.yml
+.eslintrc
+.nvmrc
+.gitignore
+
