@@ -1,11 +1,6 @@
 import path from 'path';
 import readVarsFromJavascriptFiles from './readVarsFromJavascriptFiles';
 
-/*
-const files = ['jsVars1.js', 'jsonVars1.json', 'jsVars2.js'].map(
-  path.resolve.bind(__dirname, '../__mocks__')
-);
-*/
 const files = [
   path.resolve(__dirname, '../__mocks__/jsVars1.js'),
   path.resolve(__dirname, '../__mocks__/jsonVars1.json'),
