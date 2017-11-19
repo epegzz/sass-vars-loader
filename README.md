@@ -4,6 +4,9 @@
   <a target="_blank" href="https://travis-ci.org/epegzz/sass-vars-loader">
     <img alt="Travis" src="https://img.shields.io/travis/epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
+  <a target="_blank" href="https://codeclimate.com/github/epegzz/sass-vars-loader/maintainability">
+    <img alt="Codecov" src="https://img.shields.io/codeclimate/maintainability/epegzz/sass-vars-loader.svg?style=flat-square">
+  </a>
   <a target="_blank" href="https://codecov.io/gh/epegzz/sass-vars-loader">
     <img alt="Codecov" src="https://img.shields.io/codecov/c/github/epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
@@ -11,7 +14,7 @@
     <img alt="npm version" src="https://img.shields.io/npm/v/@epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
   <a target="_blank" href="https://www.npmjs.com/package/@epegzz/sass-vars-loader">
-    <img alt="npm version" src="https://img.shields.io/npm/dm/@epegzz/sass-vars-loader.svg?style=flat-square">
+    <img alt="npm installs" src="https://img.shields.io/npm/dm/@epegzz/sass-vars-loader.svg?style=flat-square">
   </a>
   <a target="_blank" href="https://david-dm.org/epegzz/sass-vars-loader">
     <img alt="dependencies" src="https://img.shields.io/david/epegzz/sass-vars-loader.svg?style=flat-square">
