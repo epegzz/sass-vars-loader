@@ -1,9 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`With vars from JSON, JS and config Returns expected Sass contents 1`] = `
+"$value1FromJson:foo;
+$loadingOrderTest1:fromJSON;
+$loadingOrderTest2:fromJS;
+$value1FromJs:foo;
+$loadingOrderTest3:fromConfig;
+sassFileContents"
+`;
+
 exports[`With vars from files Returns expected Sass contents 1`] = `
 "$value1FromJson:foo;
+$loadingOrderTest1:fromJSON;
+$loadingOrderTest2:fromJS;
 $value2FromJson:foo;
 $value1FromJs:foo;
+$loadingOrderTest3:fromJS;
 sassFileContents"
 `;
 

@@ -1,3 +1,5 @@
 {
-  "value1FromJson": "foo"
+  "value1FromJson": "foo",
+  "loadingOrderTest1": "fromJSON",
+  "loadingOrderTest2": "fromJSON"
 }

@@ -13,9 +13,9 @@ export default function(content) {
   watchFilesForChanges(this, files);
 
   const vars = {
-    ...options.vars,
     ...getVarsFromJSONFiles(files),
-    ...getVarsFromJavascriptFiles(files)
+    ...getVarsFromJavascriptFiles(files),
+    ...options.vars
   };
 
   const sassVarsString = convertJsToSass(vars);

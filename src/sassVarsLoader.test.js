@@ -24,6 +24,16 @@ const mockOptionsWithVarsFromFiles = {
   ]
 };
 
+const mockOptionsWithVarsFromAll = {
+  vars: {
+    loadingOrderTest3: 'fromConfig'
+  },
+  files: [
+    path.resolve(__dirname, '__mocks__/jsonVars1.json'),
+    path.resolve(__dirname, '__mocks__/jsVars1.js')
+  ]
+};
+
 const mockSassFileContents = `sassFileContents`;
 const loaderContext = {
   cacheable: jest.fn(),
@@ -68,6 +78,20 @@ describe('With vars from files', () => {
     expect(loaderContext.addDependency).toBeCalledWith(mockOptions.files[0]);
     expect(loaderContext.addDependency).toBeCalledWith(mockOptions.files[1]);
     expect(loaderContext.addDependency).toBeCalledWith(mockOptions.files[2]);
+  });
+});
+
+describe('With vars from JSON, JS and config', () => {
+  beforeAll(() => {
+    loaderContext.cacheable.mockClear();
+    mockOptions = mockOptionsWithVarsFromAll;
+    result = sassVarsLoader.call(loaderContext, mockSassFileContents);
+  });
+  it('Returns expected Sass contents', () => {
+    expect(result).toMatchSnapshot();
+  });
+  it('Marks itself as cacheable', () => {
+    expect(loaderContext.cacheable).toBeCalled();
   });
 });
 

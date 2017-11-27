@@ -10,6 +10,8 @@ const files = [
 it('returns a vars object as expected', () => {
   expect(readVarsFromJavascriptFiles(files)).toEqual({
     value1FromJs: 'foo',
-    value2FromJs: 'foo'
+    value2FromJs: 'foo',
+    loadingOrderTest2: 'fromJS',
+    loadingOrderTest3: 'fromJS'
   });
 });

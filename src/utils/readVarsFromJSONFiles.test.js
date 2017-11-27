@@ -10,6 +10,8 @@ const files = [
 it('returns a vars object as expected', () => {
   expect(readVarsFromJSONFiles(files)).toEqual({
     value1FromJson: 'foo',
-    value2FromJson: 'foo'
+    value2FromJson: 'foo',
+    loadingOrderTest1: 'fromJSON',
+    loadingOrderTest2: 'fromJSON'
   });
 });
