@@ -16,6 +16,11 @@ const mockOptionsWithVarsFromWebpack = {
   }
 };
 
+const mockOptionsWithSassSyntax = {
+  ...mockOptionsWithVarsFromWebpack,
+  syntax: 'sass'
+};
+
 const mockOptionsWithVarsFromFiles = {
   files: [
     path.resolve(__dirname, '__mocks__/jsonVars1.json'),
@@ -106,5 +111,15 @@ describe('Without options', () => {
   });
   it('Marks itself as cacheable', () => {
     expect(loaderContext.cacheable).toBeCalled();
+  });
+});
+
+describe('With sass syntax', () => {
+  beforeAll(() => {
+    mockOptions = mockOptionsWithSassSyntax;
+    result = sassVarsLoader.call(loaderContext, mockSassFileContents);
+  });
+  it('Returns expected Sass contents', () => {
+    expect(result).toMatchSnapshot();
   });
 });

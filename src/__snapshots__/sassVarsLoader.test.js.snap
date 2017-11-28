@@ -1,32 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`With sass syntax Returns expected Sass contents 1`] = `
+"$value1FromWebpack: foo
+$value2FromWebpack: foo
+$nested: (works: (veryWell: true, withoutProblems: true))
+sassFileContents"
+`;
+
 exports[`With vars from JSON, JS and config Returns expected Sass contents 1`] = `
-"$value1FromJson:foo;
-$loadingOrderTest1:fromJSON;
-$loadingOrderTest2:fromJS;
-$value1FromJs:foo;
-$loadingOrderTest3:fromConfig;
+"$value1FromJson: foo;
+$loadingOrderTest1: fromJSON;
+$loadingOrderTest2: fromJS;
+$value1FromJs: foo;
+$loadingOrderTest3: fromConfig;
 sassFileContents"
 `;
 
 exports[`With vars from files Returns expected Sass contents 1`] = `
-"$value1FromJson:foo;
-$loadingOrderTest1:fromJSON;
-$loadingOrderTest2:fromJS;
-$value2FromJson:foo;
-$value1FromJs:foo;
-$loadingOrderTest3:fromJS;
+"$value1FromJson: foo;
+$loadingOrderTest1: fromJSON;
+$loadingOrderTest2: fromJS;
+$value2FromJson: foo;
+$value1FromJs: foo;
+$loadingOrderTest3: fromJS;
 sassFileContents"
 `;
 
 exports[`With vars from webpack config Returns expected Sass contents 1`] = `
-"$value1FromWebpack:foo;
-$value2FromWebpack:foo;
-$nested:(
-works:(
-veryWell:true,
-withoutProblems:true
-)
-);
+"$value1FromWebpack: foo;
+$value2FromWebpack: foo;
+$nested: (works: (veryWell: true, withoutProblems: true));
 sassFileContents"
 `;
