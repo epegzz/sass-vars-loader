@@ -27,7 +27,7 @@ describe('With vars from webpack config', () => {
     })
   );
   expectCorrectResult();
-  expectMarketItselfAsCacheable();
+  expectMarksItselfAsCacheable();
 });
 
 describe('With vars from files', () => {
@@ -41,7 +41,7 @@ describe('With vars from files', () => {
     })
   );
   expectCorrectResult();
-  expectMarketItselfAsCacheable();
+  expectMarksItselfAsCacheable();
   expectWatchesFilesForChanges();
 });
 
@@ -63,7 +63,7 @@ describe('With vars from JSON, JS and config', () => {
 describe('Without options', () => {
   beforeAll(() => setup());
   expectCorrectResult();
-  expectMarketItselfAsCacheable();
+  expectMarksItselfAsCacheable();
 });
 
 describe('With sass syntax', () => {
@@ -96,7 +96,7 @@ function expectCorrectResult() {
   });
 }
 
-function expectMarketItselfAsCacheable() {
+function expectMarksItselfAsCacheable() {
   it('Marks itself as cacheable', () => {
     expect(loaderContext.cacheable).toBeCalled();
   });
