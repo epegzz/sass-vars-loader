@@ -1,112 +1,91 @@
 import path from 'path';
 import sassVarsLoader from './sassVarsLoader';
 
-let mockOptions;
+const mockSassFileContents = `sassFileContents`;
+let result, mockOptions;
+const loaderContext = {
+  cacheable: jest.fn(),
+  addDependency: jest.fn()
+};
+
 jest.mock('loader-utils', () => ({
   getOptions: () => mockOptions
 }));
 
-const scenarios = {
-  WITH_VARS_FROM_WEBPACK: Symbol(),
-  WITH_VARS_FROM_FILES: Symbol(),
-  WITH_VARS_FROM_EVERYWHERE: Symbol(),
-  WITH_SASS_SYNTAX: Symbol(),
-  WITHOUT_OPTIONS: Symbol()
-};
-
 describe('With vars from webpack config', () => {
-  beforeAll(() => setup(scenarios.WITH_VARS_FROM_WEBPACK));
+  beforeAll(() =>
+    setup({
+      vars: {
+        value1FromWebpack: 'foo',
+        nested: {
+          works: {
+            veryWell: true,
+            withoutProblems: 'indeed'
+          }
+        }
+      }
+    })
+  );
   expectCorrectResult();
   expectMarketItselfAsCacheable();
 });
 
 describe('With vars from files', () => {
-  beforeAll(() => setup(scenarios.WITH_VARS_FROM_FILES));
+  beforeAll(() =>
+    setup({
+      files: [
+        path.resolve(__dirname, '__mocks__/jsonVars1.json'),
+        path.resolve(__dirname, '__mocks__/jsVars1.js'),
+        path.resolve(__dirname, '__mocks__/jsonVars2.json')
+      ]
+    })
+  );
   expectCorrectResult();
   expectMarketItselfAsCacheable();
   expectWatchesFilesForChanges();
 });
 
 describe('With vars from JSON, JS and config', () => {
-  beforeAll(() => setup(scenarios.WITH_VARS_FROM_EVERYWHERE));
+  beforeAll(() =>
+    setup({
+      vars: {
+        loadingOrderTest3: 'fromConfig'
+      },
+      files: [
+        path.resolve(__dirname, '__mocks__/jsonVars1.json'),
+        path.resolve(__dirname, '__mocks__/jsVars1.js')
+      ]
+    })
+  );
   expectCorrectResult();
 });
 
 describe('Without options', () => {
-  beforeAll(() => setup(scenarios.WITHOUT_OPTIONS));
+  beforeAll(() => setup());
   expectCorrectResult();
   expectMarketItselfAsCacheable();
 });
 
 describe('With sass syntax', () => {
-  beforeAll(() => setup(scenarios.WITH_SASS_SYNTAX));
+  beforeAll(() =>
+    setup({
+      syntax: 'sass',
+      vars: {
+        value1FromWebpack: 'foo',
+        nested: {
+          works: {
+            veryWell: true,
+            withoutProblems: 'indeed'
+          }
+        }
+      }
+    })
+  );
   expectCorrectResult();
 });
 
-const loaderContext = {
-  cacheable: jest.fn(),
-  addDependency: jest.fn()
-};
-
-const mockSassFileContents = `sassFileContents`;
-
-let result;
-function setup(scenario) {
-  switch (scenario) {
-    case scenarios.WITH_VARS_FROM_WEBPACK:
-      mockOptions = {
-        vars: {
-          value1FromWebpack: 'foo',
-          nested: {
-            works: {
-              veryWell: true,
-              withoutProblems: 'indeed'
-            }
-          }
-        }
-      };
-      break;
-    case scenarios.WITH_VARS_FROM_FILES:
-      mockOptions = {
-        files: [
-          path.resolve(__dirname, '__mocks__/jsonVars1.json'),
-          path.resolve(__dirname, '__mocks__/jsVars1.js'),
-          path.resolve(__dirname, '__mocks__/jsonVars2.json')
-        ]
-      };
-      break;
-    case scenarios.WITH_VARS_FROM_EVERYWHERE:
-      mockOptions = {
-        vars: {
-          loadingOrderTest3: 'fromConfig'
-        },
-        files: [
-          path.resolve(__dirname, '__mocks__/jsonVars1.json'),
-          path.resolve(__dirname, '__mocks__/jsVars1.js')
-        ]
-      };
-      break;
-    case scenarios.WITH_SASS_SYNTAX:
-      mockOptions = {
-        syntax: 'sass',
-        vars: {
-          value1FromWebpack: 'foo',
-          nested: {
-            works: {
-              veryWell: true,
-              withoutProblems: 'indeed'
-            }
-          }
-        }
-      };
-      break;
-    case scenarios.WITHOUT_OPTIONS:
-      mockOptions = null;
-      break;
-    default:
-      throw Error('Invalid Scenario');
-  }
-
+function setup(options) {
+  mockOptions = options;
   loaderContext.cacheable.mockClear();
   result = sassVarsLoader.call(loaderContext, mockSassFileContents);
 }
