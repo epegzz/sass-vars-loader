@@ -1,14 +1,15 @@
-function convertJsToSass(obj, syntax = 'scss', isNested) {
-  const prefix = isNested ? '' : '$';
-  const suffix = isNested ? ', ' : syntax === 'sass' ? '\n' : ';\n';
-  const lastItemSuffix = isNested ? '' : syntax === 'sass' ? '\n' : ';\n';
-
+function convertJsToSass(obj, syntax) {
+  const suffix = syntax === 'sass' ? '' : ';';
   const keys = Object.keys(obj);
   const lines = keys.map(
-    key => `${prefix}${key}: ${formatValue(obj[key], syntax)}`
+    key => `$${key}: ${formatValue(obj[key], syntax)}${suffix}`
   );
+  return lines.join('\n');
+}
 
-  return lines.length ? `${lines.join(suffix)}${lastItemSuffix}` : '';
+function formatNestedObject(obj, syntax) {
+  const keys = Object.keys(obj);
+  return keys.map(key => `${key}: ${formatValue(obj[key], syntax)}`).join(', ');
 }
 
 function formatValue(value, syntax) {
@@ -17,7 +18,7 @@ function formatValue(value, syntax) {
   }
 
   if (typeof value === 'object') {
-    return `(${convertJsToSass(value, syntax, true)})`;
+    return `(${formatNestedObject(value, syntax)})`;
   }
 
   if (typeof value === 'string') {

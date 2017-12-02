@@ -21,5 +21,5 @@ export default function(content) {
 
   const sassVarsString = convertJsToSass(vars, syntax);
 
-  return `${sassVarsString}${content}`;
+  return `${sassVarsString}\n${content}`;
 }

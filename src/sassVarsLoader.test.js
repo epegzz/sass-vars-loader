@@ -107,7 +107,7 @@ describe('Without options', () => {
     result = sassVarsLoader.call(loaderContext, mockSassFileContents);
   });
   it('Returns expected Sass contents', () => {
-    expect(result).toEqual(mockSassFileContents);
+    expect(result).toEqual(`\n${mockSassFileContents}`);
   });
   it('Marks itself as cacheable', () => {
     expect(loaderContext.cacheable).toBeCalled();
