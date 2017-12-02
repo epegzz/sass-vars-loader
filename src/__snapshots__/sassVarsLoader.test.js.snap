@@ -2,8 +2,7 @@
 
 exports[`With sass syntax Returns expected Sass contents 1`] = `
 "$value1FromWebpack: foo
-$value2FromWebpack: foo
-$nested: (works: (veryWell: true, withoutProblems: true))
+$nested: (works: (veryWell: true, withoutProblems: indeed))
 sassFileContents"
 `;
 
@@ -28,7 +27,11 @@ sassFileContents"
 
 exports[`With vars from webpack config Returns expected Sass contents 1`] = `
 "$value1FromWebpack: foo;
-$value2FromWebpack: foo;
-$nested: (works: (veryWell: true, withoutProblems: true));
+$nested: (works: (veryWell: true, withoutProblems: indeed));
+sassFileContents"
+`;
+
+exports[`Without options Returns expected Sass contents 1`] = `
+"
 sassFileContents"
 `;
