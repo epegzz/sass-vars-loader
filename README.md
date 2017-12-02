@@ -24,11 +24,27 @@
 <br/>
 
 
-This loader allows you to load Sass variables from:
-* JSON files
-* Javascript files
-* Inlined in your Webpack config file
 
+##### This loader allows you to load Sass variables from:
+
+<li>✅ JSON Files</li>
+<li>✅ Javascript Files</li>
+<li>✅ Inlined in Webpack Config</li>
+
+
+
+##### Supports both syntax types:
+
+<li>✅ SASS Syntax</li>
+<li>✅ SCSS Syntax</li>
+
+
+
+##### Supports hot reload:
+
+<li>✅ HMR Enabled</li>
+
+<br/>
 
 ## Install
 
