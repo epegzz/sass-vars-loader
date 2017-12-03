@@ -226,7 +226,7 @@ module.exports = {
 ```
 
 
-### Pro Tip: Nested Vars!
+### Pro Tip: Using objects as Sass vars!
 
 Use [map_get](http://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method)
 in order to use objects as Sass vars:
