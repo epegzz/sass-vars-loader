@@ -25,7 +25,7 @@
 
 
 
-##### This loader allows you to load Sass variables from:
+##### This loader allows you to use Sass variables defined in:
 
 <li>✅ JSON Files</li>
 <li>✅ Javascript Files</li>
