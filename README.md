@@ -28,7 +28,7 @@
 ##### This loader allows you to use Sass variables defined in:
 
 <li>✅ JSON Files</li>
-<li>✅ Javascript Files</li>
+<li>✅ JavaScript Files</li>
 <li>✅ Inlined in Webpack Config</li>
 
 
@@ -169,13 +169,13 @@ module.exports = {
 ```
 
 
-### Option 3: Load Sass vars from Javascript file
+### Option 3: Load Sass vars from JavaScript file
 
 ```js
 // config/sassVars.js
 
 module.exports = {
-  blueFromJavascript: 'blue'
+  blueFromJavaScript: 'blue'
 };
 ```
 
@@ -183,7 +183,7 @@ module.exports = {
 // styles.css:
 
 .some-class {
-  background: $blueFromJavascript;
+  background: $blueFromJavaScript;
 }
 ```
 
@@ -211,7 +211,7 @@ module.exports = {
         { loader: "@epegzz/sass-vars-loader", options: {
           syntax: 'scss',
           files: [
-            // Option 3) Load vars from Javascript file
+            // Option 3) Load vars from JavaScript file
             path.resolve(__dirname, 'config/sassVars.js')
           ]
         }
