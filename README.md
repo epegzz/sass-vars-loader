@@ -1,5 +1,5 @@
 <h1 align="center">Sass Vars Loader</h1>
-<h3 align="center">Use external vars in your SCSS files</h3>
+<h3 align="center">Import Sass vars from Webpack config or from JS/JSON files</h3>
 <p align="center">
   <a target="_blank" href="https://travis-ci.org/epegzz/sass-vars-loader">
     <img alt="Travis" src="https://img.shields.io/travis/epegzz/sass-vars-loader.svg?style=flat-square">
@@ -21,14 +21,14 @@
   </a>
 </p>
 
-<br/>
 
 
 
-##### This loader allows you to load Sass variables from:
+
+##### This loader allows you to use Sass variables defined in:
 
 <li>✅ JSON Files</li>
-<li>✅ Javascript Files</li>
+<li>✅ JavaScript Files</li>
 <li>✅ Inlined in Webpack Config</li>
 
 
@@ -169,13 +169,13 @@ module.exports = {
 ```
 
 
-### Option 3: Load Sass vars from Javascript file
+### Option 3: Load Sass vars from JavaScript file
 
 ```js
 // config/sassVars.js
 
 module.exports = {
-  blueFromJavascript: 'blue'
+  blueFromJavaScript: 'blue'
 };
 ```
 
@@ -183,7 +183,7 @@ module.exports = {
 // styles.css:
 
 .some-class {
-  background: $blueFromJavascript;
+  background: $blueFromJavaScript;
 }
 ```
 
@@ -211,7 +211,7 @@ module.exports = {
         { loader: "@epegzz/sass-vars-loader", options: {
           syntax: 'scss',
           files: [
-            // Option 3) Load vars from Javascript file
+            // Option 3) Load vars from JavaScript file
             path.resolve(__dirname, 'config/sassVars.js')
           ]
         }
@@ -226,7 +226,7 @@ module.exports = {
 ```
 
 
-### Pro Tip: Nested Vars!
+### Pro Tip: Using objects as Sass vars!
 
 Use [map_get](http://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method)
 in order to use objects as Sass vars:
