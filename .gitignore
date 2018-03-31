@@ -1,6 +1,9 @@
 # Webstorm
 .idea
 
+# VS Code
+.history
+
 # OSX
 .DS_Store
 
