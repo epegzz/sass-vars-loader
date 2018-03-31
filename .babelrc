@@ -1,0 +1,30 @@
+{
+  "plugins": [
+    "transform-object-rest-spread"
+  ],
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "4"
+        },
+        "useBuiltIns": true,
+        "loose": true
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "ignore": [
+        "**/*.test.js",
+        "__mocks__"
+      ]
+    },
+    "testing": {
+      "ignore": [
+        "dist/**/*"
+      ]
+    }
+  }
+}

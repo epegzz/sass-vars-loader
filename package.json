@@ -1,9 +1,8 @@
 {
   "name": "@epegzz/sass-vars-loader",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "author": "Daniel Schäfer <epegzz@gmail.com>",
-  "description":
-    "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
+  "description": "A SASS vars loader for Webpack. Load global SASS vars from JS/JSON files or from Webpack config.",
   "keywords": [
     "scss",
     "sass",
@@ -30,61 +29,10 @@
     "coverage": "NODE_ENV=testing jest && codecov",
     "build": "NODE_ENV=production babel src -d dist",
     "lint": "NODE_ENV=testing eslint src/**/*.js",
-    "lint-check":
-    "NODE_ENV=testing eslint --print-config .eslintrc.js | eslint-config-prettier-check"
-  },
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true
-  },
-  "babel": {
-    "plugins": ["transform-object-rest-spread"],
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": "4"
-          },
-          "useBuiltIns": true,
-          "loose": true
-        }
-      ]
-    ],
-    "env": {
-      "production": {
-        "ignore": ["**/*.test.js", "__mocks__"]
-      },
-      "testing": {
-        "ignore": ["dist/**/*"]
-      }
-    }
-  },
-  "eslintConfig": {
-    "extends": ["es2015", "plugin:jest/recommended"],
-    "plugins": ["prettier", "jest"],
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "impliedStrict": true,
-        "experimentalObjectRestSpread": true
-      }
-    },
-    "env": {
-      "jest/globals": true
-    },
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true
-        }
-      ]
-    }
+    "lint-check": "NODE_ENV=testing eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "dependencies": {
-    "loader-utils": "~1.1.0"
+    "loader-utils": "^1.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -100,6 +48,7 @@
     "eslint-plugin-jest": "^21.3.2",
     "eslint-plugin-prettier": "^2.3.1",
     "jest": "^21.2.1",
-    "prettier": "^1.8.2"
+    "prettier": "^1.8.2",
+    "prettier-eslint": "^8.8.1"
   }
 }

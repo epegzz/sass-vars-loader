@@ -1,7 +1,6 @@
 sudo: false
 language: node_js
 cache:
-  yarn: true
   directories:
   - node_modules
 env:
@@ -9,13 +8,13 @@ env:
 matrix:
   fast_finish: true
 install:
-  - NODE_ENV=development yarn install
+  - NODE_ENV=development npm install
 script:
-  - yarn lint
-  - yarn test -- --runInBand
-  - yarn coverage
+  - npm lint
+  - npm test -- --runInBand
+  - npm coverage
 before_deploy:
-  - yarn build
+  - npm build
 deploy:
   skip_cleanup: true
   provider: npm

@@ -6,5 +6,5 @@
  */
 
 export default function(loader, files) {
-  files.forEach(file => loader.addDependency(file));
+  files.forEach(file => loader.addDependency(file))
 }

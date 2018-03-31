@@ -1,3 +1,3 @@
 module.exports = {
-  value2FromJs: 'foo'
-};
+  value2FromJs: 'foo',
+}

@@ -1,16 +1,16 @@
-import path from 'path';
-import sassVarsLoader from './sassVarsLoader';
+import path from 'path'
+import sassVarsLoader from './sassVarsLoader'
 
-const mockSassFileContents = `sassFileContents`;
-let result, mockOptions;
+const mockSassFileContents = `sassFileContents`
+let result, mockOptions
 const loaderContext = {
   cacheable: jest.fn(),
-  addDependency: jest.fn()
-};
+  addDependency: jest.fn(),
+}
 
 jest.mock('loader-utils', () => ({
-  getOptions: () => mockOptions
-}));
+  getOptions: () => mockOptions,
+}))
 
 describe('With vars from webpack config', () => {
   beforeAll(() =>
@@ -20,15 +20,15 @@ describe('With vars from webpack config', () => {
         nested: {
           works: {
             veryWell: true,
-            withoutProblems: 'indeed'
-          }
-        }
-      }
+            withoutProblems: 'indeed',
+          },
+        },
+      },
     })
-  );
-  expectCorrectResult();
-  expectMarksItselfAsCacheable();
-});
+  )
+  expectCorrectResult()
+  expectMarksItselfAsCacheable()
+})
 
 describe('With vars from files', () => {
   beforeAll(() =>
@@ -36,35 +36,35 @@ describe('With vars from files', () => {
       files: [
         path.resolve(__dirname, '__mocks__/jsonVars1.json'),
         path.resolve(__dirname, '__mocks__/jsVars1.js'),
-        path.resolve(__dirname, '__mocks__/jsonVars2.json')
-      ]
+        path.resolve(__dirname, '__mocks__/jsonVars2.json'),
+      ],
     })
-  );
-  expectCorrectResult();
-  expectMarksItselfAsCacheable();
-  expectWatchesFilesForChanges();
-});
+  )
+  expectCorrectResult()
+  expectMarksItselfAsCacheable()
+  expectWatchesFilesForChanges()
+})
 
 describe('With vars from JSON, JS and config', () => {
   beforeAll(() =>
     setup({
       vars: {
-        loadingOrderTest3: 'fromConfig'
+        loadingOrderTest3: 'fromConfig',
       },
       files: [
         path.resolve(__dirname, '__mocks__/jsonVars1.json'),
-        path.resolve(__dirname, '__mocks__/jsVars1.js')
-      ]
+        path.resolve(__dirname, '__mocks__/jsVars1.js'),
+      ],
     })
-  );
-  expectCorrectResult();
-});
+  )
+  expectCorrectResult()
+})
 
 describe('Without options', () => {
-  beforeAll(() => setup());
-  expectCorrectResult();
-  expectMarksItselfAsCacheable();
-});
+  beforeAll(() => setup())
+  expectCorrectResult()
+  expectMarksItselfAsCacheable()
+})
 
 describe('With sass syntax', () => {
   beforeAll(() =>
@@ -75,39 +75,39 @@ describe('With sass syntax', () => {
         nested: {
           works: {
             veryWell: true,
-            withoutProblems: 'indeed'
-          }
-        }
-      }
+            withoutProblems: 'indeed',
+          },
+        },
+      },
     })
-  );
-  expectCorrectResult();
-});
+  )
+  expectCorrectResult()
+})
 
 function setup(options) {
-  mockOptions = options;
-  loaderContext.cacheable.mockClear();
-  result = sassVarsLoader.call(loaderContext, mockSassFileContents);
+  mockOptions = options
+  loaderContext.cacheable.mockClear()
+  result = sassVarsLoader.call(loaderContext, mockSassFileContents)
 }
 
 function expectCorrectResult() {
   it('Returns expected Sass contents', () => {
-    expect(result).toMatchSnapshot();
-  });
+    expect(result).toMatchSnapshot()
+  })
 }
 
 function expectMarksItselfAsCacheable() {
   it('Marks itself as cacheable', () => {
-    expect(loaderContext.cacheable).toBeCalled();
-  });
+    expect(loaderContext.cacheable).toBeCalled()
+  })
 }
 
 function expectWatchesFilesForChanges() {
   it('Watches files for changes', () => {
-    const { files } = mockOptions;
-    expect(loaderContext.addDependency).toHaveBeenCalledTimes(files.length);
+    const { files } = mockOptions
+    expect(loaderContext.addDependency).toHaveBeenCalledTimes(files.length)
     files.forEach(file => {
-      expect(loaderContext.addDependency).toBeCalledWith(file);
-    });
-  });
+      expect(loaderContext.addDependency).toBeCalledWith(file)
+    })
+  })
 }
