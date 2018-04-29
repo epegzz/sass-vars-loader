@@ -24,8 +24,7 @@ describe('With vars from webpack config', () => {
           },
         },
       },
-    })
-  )
+    }))
   expectCorrectResult()
   expectMarksItselfAsCacheable()
 })
@@ -38,8 +37,7 @@ describe('With vars from files', () => {
         path.resolve(__dirname, '__mocks__/jsVars1.js'),
         path.resolve(__dirname, '__mocks__/jsonVars2.json'),
       ],
-    })
-  )
+    }))
   expectCorrectResult()
   expectMarksItselfAsCacheable()
   expectWatchesFilesForChanges()
@@ -55,8 +53,7 @@ describe('With vars from JSON, JS and config', () => {
         path.resolve(__dirname, '__mocks__/jsonVars1.json'),
         path.resolve(__dirname, '__mocks__/jsVars1.js'),
       ],
-    })
-  )
+    }))
   expectCorrectResult()
 })
 
@@ -79,8 +76,7 @@ describe('With sass syntax', () => {
           },
         },
       },
-    })
-  )
+    }))
   expectCorrectResult()
 })
 

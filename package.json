@@ -28,7 +28,7 @@
     "watch-test": "NODE_ENV=testing jest --watch",
     "coverage": "NODE_ENV=testing jest && codecov",
     "build": "NODE_ENV=production babel src -d dist",
-    "lint": "NODE_ENV=testing eslint src/**/*.js",
+    "lint": "NODE_ENV=testing eslint src",
     "lint-check": "NODE_ENV=testing eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "dependencies": {

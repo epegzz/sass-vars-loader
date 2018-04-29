@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@epegzz/sass-vars-loader": "^3.2.3",
+    "@epegzz/sass-vars-loader": "^3.3.1",
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.0",
     "node-sass": "^4.9.0",
