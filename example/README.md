@@ -11,14 +11,14 @@ Open those files and play around! :)
 ## Installing
 
 ```
-yarn install
+npm install
 ```
 
 ## Running
 
 First build the `bundle.js`
 ```
-yarn build
+npm run build
 ```
 
 and then open `index.html` in your browser.
