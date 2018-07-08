@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`With sass syntax Returns expected Sass contents 1`] = `
-"$value1FromWebpack: foo
+"
+$value1FromWebpack: foo
 $nested: (works: (veryWell: true, withoutProblems: indeed))
 sassFileContents"
 `;
 
 exports[`With vars from JSON, JS and config Returns expected Sass contents 1`] = `
-"$value1FromJson: foo;
+"
+$value1FromJson: foo;
 $loadingOrderTest1: fromJSON;
 $loadingOrderTest2: fromJS;
 $value1FromJs: foo;
@@ -16,7 +18,8 @@ sassFileContents"
 `;
 
 exports[`With vars from files Returns expected Sass contents 1`] = `
-"$value1FromJson: foo;
+"
+$value1FromJson: foo;
 $loadingOrderTest1: fromJSON;
 $loadingOrderTest2: fromJS;
 $value2FromJson: foo;
@@ -26,12 +29,14 @@ sassFileContents"
 `;
 
 exports[`With vars from webpack config Returns expected Sass contents 1`] = `
-"$value1FromWebpack: foo;
+"
+$value1FromWebpack: foo;
 $nested: (works: (veryWell: true, withoutProblems: indeed));
 sassFileContents"
 `;
 
 exports[`Without options Returns expected Sass contents 1`] = `
 "
+
 sassFileContents"
 `;

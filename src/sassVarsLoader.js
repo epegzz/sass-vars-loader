@@ -1,6 +1,7 @@
 import loaderUtils from 'loader-utils'
-import getVarsFromJSONFiles from './utils/readVarsFromJSONFiles'
-import getVarsFromJavascriptFiles from './utils/readVarsFromJavascriptFiles'
+import readVarsFromJSONFiles from './utils/readVarsFromJSONFiles'
+import readVarsFromJavascriptFiles from './utils/readVarsFromJavascriptFiles'
+import readSassFiles from './utils/readSassFiles'
 import watchFilesForChanges from './utils/watchFilesForChanges'
 import convertJsToSass from './utils/convertJsToSass'
 
@@ -14,12 +15,12 @@ export default function(content) {
   watchFilesForChanges(this, files)
 
   const vars = {
-    ...getVarsFromJSONFiles(files),
-    ...getVarsFromJavascriptFiles(files),
+    ...readVarsFromJSONFiles(files),
+    ...readVarsFromJavascriptFiles(files),
     ...options.vars,
   }
 
   const sassVarsString = convertJsToSass(vars, syntax)
 
-  return `${sassVarsString}\n${content}`
+  return [readSassFiles(files), sassVarsString, content].join('\n')
 }
