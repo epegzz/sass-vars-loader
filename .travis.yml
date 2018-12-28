@@ -1,8 +1,9 @@
 sudo: false
 language: node_js
+codecov: true
 cache:
   directories:
-  - node_modules
+    - node_modules
 env:
   - NODE_ENV=development
 matrix:
