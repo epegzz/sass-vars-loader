@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   entry: './src/index.js',
@@ -18,31 +18,33 @@ module.exports = {
           // Compiles Sass to CSS
           {
             loader: 'sass-loader',
-            options: { includePaths: ['app/styles.scss'] }
+            options: { includePaths: ['app/styles.scss'] },
           },
 
           // Reads Sass vars from files or inlined in the options property
           {
             loader: '@epegzz/sass-vars-loader',
             options: {
-              // Option 1) Specify vars here
+              // You can specify vars here
               vars: {
-                greenFromWebpackConfig: 'green'
+                greenFromWebpackConfig: 'opaque(green, 0.5)', // `opaque` is defined in `config/utils.scss` which gets loaded below
               },
               files: [
-                // Option 2) Load vars from JSON file
+                // You can include sass files
+                path.resolve(__dirname, 'config/utils.scss'),
+                // You can include JSON files
                 path.resolve(__dirname, 'config/sassVars.json'),
-                // Option 3) Load vars from JS file
-                path.resolve(__dirname, 'config/sassVars.js')
-              ]
-            }
-          }
-        ]
-      }
-    ]
+                // You can include JavaScript files
+                path.resolve(__dirname, 'config/sassVars.js'),
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  }
-};
+    path: path.resolve(__dirname, 'dist'),
+  },
+}

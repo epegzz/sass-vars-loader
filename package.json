@@ -33,7 +33,10 @@
     "lint-check": "NODE_ENV=testing eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "loader-utils": "^1.1.0"
