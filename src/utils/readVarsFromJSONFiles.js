@@ -1,12 +1,9 @@
-import fs from 'fs'
+const fs = require('fs')
 
-export default function(files) {
+module.exports = function(files) {
   return files.reduce(
     (vars, filepath) =>
-      Object.assign(
-        vars,
-        filepath.endsWith('.json') && JSON.parse(fs.readFileSync(filepath, 'utf8'))
-      ),
+      Object.assign(vars, filepath.endsWith('.json') && JSON.parse(fs.readFileSync(filepath, 'utf8'))),
     {}
   )
 }

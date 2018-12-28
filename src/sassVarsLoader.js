@@ -1,11 +1,11 @@
-import loaderUtils from 'loader-utils'
-import readVarsFromJSONFiles from './utils/readVarsFromJSONFiles'
-import readVarsFromJavascriptFiles from './utils/readVarsFromJavascriptFiles'
-import readSassFiles from './utils/readSassFiles'
-import watchFilesForChanges from './utils/watchFilesForChanges'
-import convertJsToSass from './utils/convertJsToSass'
+const loaderUtils = require('loader-utils')
+const readVarsFromJSONFiles = require('./utils/readVarsFromJSONFiles')
+const readVarsFromJavascriptFiles = require('./utils/readVarsFromJavascriptFiles')
+const readSassFiles = require('./utils/readSassFiles')
+const watchFilesForChanges = require('./utils/watchFilesForChanges')
+const convertJsToSass = require('./utils/convertJsToSass')
 
-export default function(content) {
+module.exports = function(content) {
   this.cacheable()
 
   const options = loaderUtils.getOptions(this) || {}

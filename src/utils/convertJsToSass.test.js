@@ -1,4 +1,4 @@
-import convertJsToSass from './convertJsToSass'
+const convertJsToSass = require('./convertJsToSass')
 
 const testCases = [
   { name: 'converts string', input: { it: 'value' } },

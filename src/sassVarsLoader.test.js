@@ -1,5 +1,5 @@
-import path from 'path'
-import sassVarsLoader from './sassVarsLoader'
+const path = require('path')
+const sassVarsLoader = require('./sassVarsLoader')
 
 const mockSassFileContents = `sassFileContents`
 let result, mockOptions
@@ -49,10 +49,7 @@ describe('With vars from JSON, JS and config', () => {
       vars: {
         loadingOrderTest3: 'fromConfig',
       },
-      files: [
-        path.resolve(__dirname, '__mocks__/jsonVars1.json'),
-        path.resolve(__dirname, '__mocks__/jsVars1.js'),
-      ],
+      files: [path.resolve(__dirname, '__mocks__/jsonVars1.json'), path.resolve(__dirname, '__mocks__/jsVars1.js')],
     }))
   expectCorrectResult()
 })

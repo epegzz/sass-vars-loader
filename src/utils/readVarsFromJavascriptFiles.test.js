@@ -1,5 +1,5 @@
-import path from 'path'
-import readVarsFromJavascriptFiles from './readVarsFromJavascriptFiles'
+const path = require('path')
+const readVarsFromJavascriptFiles = require('./readVarsFromJavascriptFiles')
 
 const files = [
   path.resolve(__dirname, '../__mocks__/jsVars1.js'),

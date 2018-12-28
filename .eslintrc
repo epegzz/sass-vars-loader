@@ -1,15 +1,12 @@
 {
   "extends": [
-    "es2015",
-    "plugin:jest/recommended",
-    "plugin:prettier/recommended"
+    "plugin:jest/recommended"
   ],
   "plugins": [
-    "prettier",
     "jest"
   ],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "impliedStrict": true,
@@ -18,17 +15,5 @@
   },
   "env": {
     "jest/globals": true
-  },
-  "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "tabWidth": 2,
-        "trailingComma": "es5",
-        "printWidth": 100,
-        "semi": false
-      }
-    ]
   }
 }

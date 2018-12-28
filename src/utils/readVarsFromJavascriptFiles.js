@@ -1,4 +1,4 @@
-export default function(files) {
+module.exports = function(files) {
   return files.reduce((vars, filepath) => {
     if (!filepath.endsWith('.js')) {
       return vars

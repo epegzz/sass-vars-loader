@@ -26,4 +26,4 @@ function formatValue(value, syntax) {
   return JSON.stringify(value)
 }
 
-export default convertJsToSass
+module.exports = convertJsToSass

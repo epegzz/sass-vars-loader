@@ -14,8 +14,6 @@ script:
   - npm run lint
   - npm run test -- --runInBand
   - npm run coverage
-before_deploy:
-  - npm run build
 deploy:
   skip_cleanup: true
   provider: npm

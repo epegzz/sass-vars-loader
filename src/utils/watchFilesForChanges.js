@@ -5,6 +5,6 @@
  * the files in watch-mode and reload if they change.
  */
 
-export default function(loader, files) {
+module.exports = function(loader, files) {
   files.forEach(file => loader.addDependency(file))
 }
