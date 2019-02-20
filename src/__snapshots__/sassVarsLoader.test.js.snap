@@ -14,6 +14,9 @@ $loadingOrderTest1: fromJSON;
 $loadingOrderTest2: fromJS;
 $value1FromJs: foo;
 $loadingOrderTest3: fromConfig;
+$value1FromTs: tsFoo;
+$loadingOrderTest4: fromTS;
+$loadingOrderTest5: fromTS;
 sassFileContents"
 `;
 
@@ -25,6 +28,9 @@ $loadingOrderTest2: fromJS;
 $value2FromJson: foo;
 $value1FromJs: foo;
 $loadingOrderTest3: fromJS;
+$value1FromTs: tsFoo;
+$loadingOrderTest4: fromTS;
+$loadingOrderTest5: fromTS;
 sassFileContents"
 `;
 

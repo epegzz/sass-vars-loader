@@ -35,6 +35,7 @@ describe('With vars from files', () => {
       files: [
         path.resolve(__dirname, '__mocks__/jsonVars1.json'),
         path.resolve(__dirname, '__mocks__/jsVars1.js'),
+        path.resolve(__dirname, '__mocks__/tsVars1.ts'),
         path.resolve(__dirname, '__mocks__/jsonVars2.json'),
       ],
     }))
@@ -49,7 +50,11 @@ describe('With vars from JSON, JS and config', () => {
       vars: {
         loadingOrderTest3: 'fromConfig',
       },
-      files: [path.resolve(__dirname, '__mocks__/jsonVars1.json'), path.resolve(__dirname, '__mocks__/jsVars1.js')],
+      files: [
+        path.resolve(__dirname, '__mocks__/jsonVars1.json'),
+        path.resolve(__dirname, '__mocks__/jsVars1.js'),
+        path.resolve(__dirname, '__mocks__/tsVars1.ts'),
+      ],
     }))
   expectCorrectResult()
 })

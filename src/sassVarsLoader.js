@@ -1,6 +1,7 @@
 const loaderUtils = require('loader-utils')
 const readVarsFromJSONFiles = require('./utils/readVarsFromJSONFiles')
 const readVarsFromJavascriptFiles = require('./utils/readVarsFromJavascriptFiles')
+const readVarsFromTypescriptFiles = require('./utils/readVarsFromTypescriptFiles')
 const readSassFiles = require('./utils/readSassFiles')
 const watchFilesForChanges = require('./utils/watchFilesForChanges')
 const convertJsToSass = require('./utils/convertJsToSass')
@@ -17,6 +18,7 @@ module.exports = function(content) {
   const vars = {
     ...readVarsFromJSONFiles(files),
     ...readVarsFromJavascriptFiles(files),
+    ...readVarsFromTypescriptFiles(files),
     ...options.vars,
   }
 
