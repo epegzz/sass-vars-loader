@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`With sass syntax converts array with nested arrays 1`] = `"$it: ((list, 1), (list, 2))"`;
+exports[`With sass syntax converts array with nested arrays 1`] = `"$it: ((\\"list\\", 1), (\\"list\\", 2))"`;
 
 exports[`With sass syntax converts empty array 1`] = `"$it: ()"`;
 
@@ -9,27 +9,27 @@ exports[`With sass syntax converts empty object 1`] = `""`;
 exports[`With sass syntax converts multi value object 1`] = `"$it: (a: 1, b: 2)"`;
 
 exports[`With sass syntax converts multiple vars 1`] = `
-"$it: value
-$also: this"
+"$it: \\"value\\"
+$also: \\"this\\""
 `;
 
-exports[`With sass syntax converts nested object with array 1`] = `"$it: (a: 1, b: 2, c: (d: (4, px, em)))"`;
+exports[`With sass syntax converts nested object with array 1`] = `"$it: (a: 1, b: 2, c: (d: (4, \\"px\\", \\"em\\")))"`;
 
 exports[`With sass syntax converts nested object: nested 1`] = `"$it: (a: 1, b: 2, c: (d: 4))"`;
 
 exports[`With sass syntax converts number 1`] = `"$it: 5"`;
 
-exports[`With sass syntax converts object with nested array 1`] = `"$it: (15, px, (nested: (oh, no)))"`;
+exports[`With sass syntax converts object with nested array 1`] = `"$it: (15, \\"px\\", (nested: (\\"oh\\", \\"no\\")))"`;
 
 exports[`With sass syntax converts simple object 1`] = `"$it: (a: 1)"`;
 
 exports[`With sass syntax converts simple simple 1`] = `"$it: (1, 2)"`;
 
-exports[`With sass syntax converts string 1`] = `"$it: value"`;
+exports[`With sass syntax converts string 1`] = `"$it: \\"value\\""`;
 
-exports[`With sass syntax converts string with quotes 1`] = `"$it: \\"value\\""`;
+exports[`With sass syntax converts string with quotes 1`] = `"$it: \\"\\"value\\"\\""`;
 
-exports[`With scss syntax converts array with nested arrays 1`] = `"$it: ((list, 1), (list, 2));"`;
+exports[`With scss syntax converts array with nested arrays 1`] = `"$it: ((\\"list\\", 1), (\\"list\\", 2));"`;
 
 exports[`With scss syntax converts empty array 1`] = `"$it: ();"`;
 
@@ -38,22 +38,22 @@ exports[`With scss syntax converts empty object 1`] = `""`;
 exports[`With scss syntax converts multi value object 1`] = `"$it: (a: 1, b: 2);"`;
 
 exports[`With scss syntax converts multiple vars 1`] = `
-"$it: value;
-$also: this;"
+"$it: \\"value\\";
+$also: \\"this\\";"
 `;
 
-exports[`With scss syntax converts nested object with array 1`] = `"$it: (a: 1, b: 2, c: (d: (4, px, em)));"`;
+exports[`With scss syntax converts nested object with array 1`] = `"$it: (a: 1, b: 2, c: (d: (4, \\"px\\", \\"em\\")));"`;
 
 exports[`With scss syntax converts nested object: nested 1`] = `"$it: (a: 1, b: 2, c: (d: 4));"`;
 
 exports[`With scss syntax converts number 1`] = `"$it: 5;"`;
 
-exports[`With scss syntax converts object with nested array 1`] = `"$it: (15, px, (nested: (oh, no)));"`;
+exports[`With scss syntax converts object with nested array 1`] = `"$it: (15, \\"px\\", (nested: (\\"oh\\", \\"no\\")));"`;
 
 exports[`With scss syntax converts simple object 1`] = `"$it: (a: 1);"`;
 
 exports[`With scss syntax converts simple simple 1`] = `"$it: (1, 2);"`;
 
-exports[`With scss syntax converts string 1`] = `"$it: value;"`;
+exports[`With scss syntax converts string 1`] = `"$it: \\"value\\";"`;
 
-exports[`With scss syntax converts string with quotes 1`] = `"$it: \\"value\\";"`;
+exports[`With scss syntax converts string with quotes 1`] = `"$it: \\"\\"value\\"\\";"`;
