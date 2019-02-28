@@ -3,6 +3,7 @@
 
 # VS Code
 .history
+.vscode
 
 # OSX
 .DS_Store
