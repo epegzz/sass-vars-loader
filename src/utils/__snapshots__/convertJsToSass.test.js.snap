@@ -6,6 +6,21 @@ exports[`With sass syntax converts empty array 1`] = `"$it: ()"`;
 
 exports[`With sass syntax converts empty object 1`] = `""`;
 
+exports[`With sass syntax converts multi line string 1`] = `
+"$it: \\"line1
+line2\\""
+`;
+
+exports[`With sass syntax converts multi line string with double quotes 1`] = `
+"$it: \\"line1
+line2\\""
+`;
+
+exports[`With sass syntax converts multi line string with single quotes 1`] = `
+"$it: 'line1
+line2'"
+`;
+
 exports[`With sass syntax converts multi value object 1`] = `"$it: (a: 1, b: 2)"`;
 
 exports[`With sass syntax converts multiple vars 1`] = `
@@ -27,13 +42,30 @@ exports[`With sass syntax converts simple simple 1`] = `"$it: (1, 2)"`;
 
 exports[`With sass syntax converts string 1`] = `"$it: \\"value\\""`;
 
-exports[`With sass syntax converts string with quotes 1`] = `"$it: \\"\\"value\\"\\""`;
+exports[`With sass syntax converts string with double quotes 1`] = `"$it: 'value'"`;
+
+exports[`With sass syntax converts string with single quotes 1`] = `"$it: \\"value\\""`;
 
 exports[`With scss syntax converts array with nested arrays 1`] = `"$it: ((\\"list\\", 1), (\\"list\\", 2));"`;
 
 exports[`With scss syntax converts empty array 1`] = `"$it: ();"`;
 
 exports[`With scss syntax converts empty object 1`] = `""`;
+
+exports[`With scss syntax converts multi line string 1`] = `
+"$it: \\"line1
+line2\\";"
+`;
+
+exports[`With scss syntax converts multi line string with double quotes 1`] = `
+"$it: \\"line1
+line2\\";"
+`;
+
+exports[`With scss syntax converts multi line string with single quotes 1`] = `
+"$it: 'line1
+line2';"
+`;
 
 exports[`With scss syntax converts multi value object 1`] = `"$it: (a: 1, b: 2);"`;
 
@@ -56,4 +88,6 @@ exports[`With scss syntax converts simple simple 1`] = `"$it: (1, 2);"`;
 
 exports[`With scss syntax converts string 1`] = `"$it: \\"value\\";"`;
 
-exports[`With scss syntax converts string with quotes 1`] = `"$it: \\"\\"value\\"\\";"`;
+exports[`With scss syntax converts string with double quotes 1`] = `"$it: 'value';"`;
+
+exports[`With scss syntax converts string with single quotes 1`] = `"$it: \\"value\\";"`;

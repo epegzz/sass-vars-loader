@@ -10,6 +10,11 @@ function formatNestedObject(obj, syntax) {
   return keys.map(key => `${key}: ${formatValue(obj[key], syntax)}`).join(', ')
 }
 
+function withQuotes(value) {
+  const hasQuotes = /^['"](\n|.)*['"]$/gm.test(value)
+  return hasQuotes ? value : `"${value}"`
+}
+
 function formatValue(value, syntax) {
   if (value instanceof Array) {
     return `(${value.map(formatValue).join(', ')})`
@@ -20,7 +25,7 @@ function formatValue(value, syntax) {
   }
 
   if (typeof value === 'string') {
-    return `"${value}"`
+    return withQuotes(value)
   }
 
   return JSON.stringify(value)
