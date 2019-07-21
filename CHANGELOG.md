@@ -1,3 +1,8 @@
+## `v5.0.0` Do not quote strings
+This might be a breaking change for some: Until now, all variable values that started
+with a "0" or a whitespace got automatically quoted.
+From now on you need to add the quotes yourself if you need them (i.e. "'0123'").
+
 ## `v4.4.0` Resolve files
 Arguments passed to the `files` option are now getting resolved, which allows
 passing files that are installed as node_modules without loosing HMR functionality.
