@@ -2,8 +2,6 @@ const convertJsToSass = require('./convertJsToSass')
 
 const testCases = [
   { name: 'converts string', input: { it: 'value' } },
-  { name: 'converts string and adds quotes for leading zero', input: { it: '012345' } },
-  { name: 'converts string and adds quotes for leading spaces', input: { it: '  value' } },
   { name: 'converts multi line string', input: { it: 'line1\nline2' } },
   { name: 'converts string with single quotes', input: { it: '"value"' } },
   { name: 'converts string with double quotes', input: { it: "'value'" } },

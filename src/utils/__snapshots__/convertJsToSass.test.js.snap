@@ -42,10 +42,6 @@ exports[`With sass syntax converts simple simple 1`] = `"$it: (1, 2)"`;
 
 exports[`With sass syntax converts string 1`] = `"$it: value"`;
 
-exports[`With sass syntax converts string and adds quotes for leading spaces 1`] = `"$it: \\"  value\\""`;
-
-exports[`With sass syntax converts string and adds quotes for leading zero 1`] = `"$it: \\"012345\\""`;
-
 exports[`With sass syntax converts string with double quotes 1`] = `"$it: 'value'"`;
 
 exports[`With sass syntax converts string with single quotes 1`] = `"$it: \\"value\\""`;
@@ -91,10 +87,6 @@ exports[`With scss syntax converts simple object 1`] = `"$it: (a: 1);"`;
 exports[`With scss syntax converts simple simple 1`] = `"$it: (1, 2);"`;
 
 exports[`With scss syntax converts string 1`] = `"$it: value;"`;
-
-exports[`With scss syntax converts string and adds quotes for leading spaces 1`] = `"$it: \\"  value\\";"`;
-
-exports[`With scss syntax converts string and adds quotes for leading zero 1`] = `"$it: \\"012345\\";"`;
 
 exports[`With scss syntax converts string with double quotes 1`] = `"$it: 'value';"`;
 
