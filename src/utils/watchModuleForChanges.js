@@ -8,9 +8,9 @@
 module.exports = async function(loader, file) {
   return new Promise((resolve, reject) => {
     delete require.cache[require.resolve(file)]
-    loader.resolve(loader.rootContext, file, (err, file) => {
+    loader.resolve(loader.rootContext, file, (err, resolvedFile) => {
       if (err) return reject(err)
-      loader.addDependency(file)
+      loader.addDependency(resolvedFile)
       resolve()
     })
   })
