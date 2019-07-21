@@ -1,18 +1,61 @@
+const path = require('path')
 const watchFilesForChanges = require('./watchFilesForChanges')
+const watchFileForChanges = require('./watchFileForChanges')
+const watchModuleForChanges = require('./watchModuleForChanges')
 
-const mockFiles = ['file1', 'file2', 'file3']
-const mockLoader = {
-  addDependency: jest.fn(),
-}
+jest.mock('./watchFileForChanges')
+jest.mock('./watchModuleForChanges')
 
-describe('When I call the function', () => {
-  beforeAll(() => {
-    watchFilesForChanges(mockLoader, mockFiles)
+describe('watchFilesForChanges', () => {
+  it('watches modules', async () => {
+    watchFileForChanges.mockClear()
+    watchModuleForChanges.mockClear()
+
+    let error
+    try {
+      await watchFilesForChanges({}, ['fs'])
+    } catch (e) {
+      error = e
+    }
+
+    expect(error).toEqual(undefined)
+    expect(watchFileForChanges).toHaveBeenCalledTimes(0)
+    expect(watchModuleForChanges).toHaveBeenCalledTimes(1)
+    expect(watchModuleForChanges).toHaveBeenCalledWith(expect.anything(), 'fs')
   })
-  it('calls `loader.addDependency` for each file', () => {
-    expect(mockLoader.addDependency).toHaveBeenCalledTimes(3)
-    expect(mockLoader.addDependency).toHaveBeenCalledWith('file1')
-    expect(mockLoader.addDependency).toHaveBeenCalledWith('file2')
-    expect(mockLoader.addDependency).toHaveBeenCalledWith('file3')
+
+  it('watches files', async () => {
+    watchFileForChanges.mockClear()
+    watchModuleForChanges.mockClear()
+
+    let error
+    const file = path.resolve(__dirname, '../__mocks__/jsVars1.js')
+    try {
+      await watchFilesForChanges({}, [file])
+    } catch (e) {
+      error = e
+    }
+
+    expect(error).toEqual(undefined)
+    expect(watchModuleForChanges).toHaveBeenCalledTimes(0)
+    expect(watchFileForChanges).toHaveBeenCalledTimes(1)
+    expect(watchFileForChanges).toHaveBeenCalledWith(expect.anything(), file)
+  })
+
+  it('throws error for invalid file', async () => {
+    watchFileForChanges.mockClear()
+    watchModuleForChanges.mockClear()
+
+    let error
+    const file = '~~invalid~~'
+    try {
+      await watchFilesForChanges({}, [file])
+    } catch (e) {
+      error = e
+    }
+
+    expect(error.message).toEqual(`Invalid file: "${file}". Consider using "path.resolve" in your config.`)
+    expect(watchModuleForChanges).toHaveBeenCalledTimes(0)
+    expect(watchFileForChanges).toHaveBeenCalledTimes(0)
   })
 })
