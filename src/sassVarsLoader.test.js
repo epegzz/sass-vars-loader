@@ -1,5 +1,6 @@
 const path = require('path')
 const sassVarsLoader = require('./sassVarsLoader')
+const transformKeys = require('./utils/transformKeys')
 
 const mockSassFileContents = `sassFileContents`
 let result, error, mockOptions
@@ -101,6 +102,46 @@ describe('With invalid file', () => {
   expectError(`Invalid file: "~invalid~". Consider using "path.resolve" in your config.`)
 })
 
+describe('With single post-processing', () => {
+  beforeAll(async () => {
+    await setup({
+      callback: transformKeys.toKebab,
+      vars: {
+        valueToTransform: 'foo',
+        nested: {
+          works: {
+            Complete: true,
+            veryWellResult: true,
+            withoutProblems: 'indeed',
+          },
+        },
+      },
+    })
+  })
+  expectCorrectResult()
+  expectMarksItselfAsCacheable()
+})
+
+describe('With multi post-processing', () => {
+  beforeAll(async () => {
+    await setup({
+      callback: [transformKeys.toKebab, transformKeys.toUpper],
+      vars: {
+        valueToTransform: 'foo',
+        nested: {
+          works: {
+            Complete: true,
+            veryWellResult: true,
+            withoutProblems: 'indeed',
+          },
+        },
+      },
+    })
+  })
+  expectCorrectResult()
+  expectMarksItselfAsCacheable()
+})
+
 async function setup(options) {
   result = null
   error = null
@@ -128,7 +169,7 @@ function expectError(message) {
 
 function expectMarksItselfAsCacheable() {
   it('Marks itself as cacheable', () => {
-    expect(loaderContext.cacheable).toBeCalled()
+    expect(loaderContext.cacheable).toHaveBeenCalled()
   })
 }
 

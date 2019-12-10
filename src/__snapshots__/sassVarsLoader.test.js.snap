@@ -1,9 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`With multi post-processing Returns expected Sass contents 1`] = `
+"
+
+sassFileContents"
+`;
+
 exports[`With sass syntax Returns expected Sass contents 1`] = `
 "
 $value1FromWebpack: foo
 $nested: (works: (veryWell: true, withoutProblems: indeed))
+sassFileContents"
+`;
+
+exports[`With single post-processing Returns expected Sass contents 1`] = `
+"
+
 sassFileContents"
 `;
 

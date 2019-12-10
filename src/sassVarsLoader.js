@@ -17,11 +17,19 @@ module.exports = async function(content) {
 
     await watchFilesForChanges(this, files)
 
-    const vars = {
+    let vars = {
       ...readVarsFromJSONFiles(files),
       ...readVarsFromJavascriptFiles(files),
       ...readVarsFromTypescriptFiles(files),
       ...options.vars,
+    }
+
+    if (options.callback) {
+      if (!Array.isArray(options.callback)) {
+        options.callback = [options.callback]
+      }
+
+      vars = options.callback.reduce((res, fn) => fn(res), {})
     }
 
     const sassVarsString = convertJsToSass(vars, syntax)
