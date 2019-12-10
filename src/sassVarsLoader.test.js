@@ -1,6 +1,5 @@
 const path = require('path')
 const sassVarsLoader = require('./sassVarsLoader')
-const transformKeys = require('./utils/transformKeys')
 
 const mockSassFileContents = `sassFileContents`
 let result, error, mockOptions
@@ -105,14 +104,14 @@ describe('With invalid file', () => {
 describe('With single post-processing', () => {
   beforeAll(async () => {
     await setup({
-      callback: transformKeys.toKebab,
+      transformKeys: key => `transformed-${key}`,
       vars: {
-        valueToTransform: 'foo',
-        nested: {
-          works: {
-            Complete: true,
-            veryWellResult: true,
-            withoutProblems: 'indeed',
+        'transformed-valueToTransform': 'foo',
+        'transformed-nested': {
+          'transformed-works': {
+            'transformed-Complete': true,
+            'transformed-veryWellResult': true,
+            'transformed-withoutProblems': 'indeed',
           },
         },
       },
@@ -125,14 +124,14 @@ describe('With single post-processing', () => {
 describe('With multi post-processing', () => {
   beforeAll(async () => {
     await setup({
-      callback: [transformKeys.toKebab, transformKeys.toUpper],
+      transformKeys: [key => `transformed-${key}`, key => key.toUpperCase()],
       vars: {
-        valueToTransform: 'foo',
-        nested: {
-          works: {
-            Complete: true,
-            veryWellResult: true,
-            withoutProblems: 'indeed',
+        'TRANSFORMED-VALUETOTRANSFORM': 'foo',
+        'TRANSFORMED-NESTED': {
+          'TRANSFORMED-WORKS': {
+            'TRANSFORMED-COMPLETE': true,
+            'TRANSFORMED-VERYWELLRESULT': true,
+            'TRANSFORMED-WITHOUTPROBLEMS': 'indeed',
           },
         },
       },

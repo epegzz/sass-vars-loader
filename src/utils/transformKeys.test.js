@@ -1,5 +1,4 @@
 const transformKeys = require('./transformKeys')
-const transformers = require('./textTransformers')
 
 const vars = {
   topPlainKey: 'hello',
@@ -11,30 +10,19 @@ const vars = {
 }
 
 describe('transformKeys', () => {
-  it('Nested camelCase to kebab-case', () => {
-    expect(transformKeys.toKebab(vars)).toStrictEqual({
-      'top-plain-key': 'hello',
-      'top-nested-key': {
-        'sub-nested-key': {
-          'deep-plain-key': true,
-        },
-      },
-    })
-  })
-
-  it('Nested camelCase to under_score', () => {
-    expect(transformKeys.toUnder(vars)).toStrictEqual({
-      top_plain_key: 'hello',
-      top_nested_key: {
-        sub_nested_key: {
-          deep_plain_key: true,
+  it('Nested adding prefix', () => {
+    expect(transformKeys(vars, key => `transformed-${key}`)).toStrictEqual({
+      'transformed-topPlainKey': 'hello',
+      'transformed-topNestedKey': {
+        'transformed-subNestedKey': {
+          'transformed-deepPlainKey': true,
         },
       },
     })
   })
 
   it('Nested camelCase to lower case', () => {
-    expect(transformKeys.toLower(vars)).toStrictEqual({
+    expect(transformKeys(vars, key => key.toLowerCase())).toStrictEqual({
       topplainkey: 'hello',
       topnestedkey: {
         subnestedkey: {
@@ -45,7 +33,7 @@ describe('transformKeys', () => {
   })
 
   it('Nested camelCase to UPPER CASE', () => {
-    expect(transformKeys.toUpper(vars)).toStrictEqual({
+    expect(transformKeys(vars, key => key.toUpperCase())).toStrictEqual({
       TOPPLAINKEY: 'hello',
       TOPNESTEDKEY: {
         SUBNESTEDKEY: {

@@ -6,6 +6,7 @@ const readVarsFromTypescriptFiles = require('./utils/readVarsFromTypescriptFiles
 const readSassFiles = require('./utils/readSassFiles')
 const watchFilesForChanges = require('./utils/watchFilesForChanges')
 const convertJsToSass = require('./utils/convertJsToSass')
+const fnTransformKeys = require('./utils/transformKeys')
 
 module.exports = async function(content) {
   this.cacheable()
@@ -24,12 +25,12 @@ module.exports = async function(content) {
       ...options.vars,
     }
 
-    if (options.callback) {
-      if (!Array.isArray(options.callback)) {
-        options.callback = [options.callback]
+    if (options.transformKeys) {
+      if (!Array.isArray(options.transformKeys)) {
+        options.transformKeys = [options.transformKeys]
       }
 
-      vars = options.callback.reduce((res, fn) => fn(res), {})
+      vars = options.transformKeys.reduce((res, fn) => fnTransformKeys(res, fn), {})
     }
 
     const sassVarsString = convertJsToSass(vars, syntax)
