@@ -18,6 +18,9 @@ node_modules
 .npmrc
 *.log
 
+# YARN
+yarn.lock
+
 # coverage
 coverage
 
