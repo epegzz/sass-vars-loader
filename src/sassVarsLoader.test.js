@@ -101,6 +101,46 @@ describe('With invalid file', () => {
   expectError(`Invalid file: "~invalid~". Consider using "path.resolve" in your config.`)
 })
 
+describe('With single post-processing', () => {
+  beforeAll(async () => {
+    await setup({
+      transformKeys: key => `transformed-${key}`,
+      vars: {
+        'transformed-valueToTransform': 'foo',
+        'transformed-nested': {
+          'transformed-works': {
+            'transformed-Complete': true,
+            'transformed-veryWellResult': true,
+            'transformed-withoutProblems': 'indeed',
+          },
+        },
+      },
+    })
+  })
+  expectCorrectResult()
+  expectMarksItselfAsCacheable()
+})
+
+describe('With multi post-processing', () => {
+  beforeAll(async () => {
+    await setup({
+      transformKeys: [key => `transformed-${key}`, key => key.toUpperCase()],
+      vars: {
+        'TRANSFORMED-VALUETOTRANSFORM': 'foo',
+        'TRANSFORMED-NESTED': {
+          'TRANSFORMED-WORKS': {
+            'TRANSFORMED-COMPLETE': true,
+            'TRANSFORMED-VERYWELLRESULT': true,
+            'TRANSFORMED-WITHOUTPROBLEMS': 'indeed',
+          },
+        },
+      },
+    })
+  })
+  expectCorrectResult()
+  expectMarksItselfAsCacheable()
+})
+
 async function setup(options) {
   result = null
   error = null
@@ -128,7 +168,7 @@ function expectError(message) {
 
 function expectMarksItselfAsCacheable() {
   it('Marks itself as cacheable', () => {
-    expect(loaderContext.cacheable).toBeCalled()
+    expect(loaderContext.cacheable).toHaveBeenCalled()
   })
 }
 

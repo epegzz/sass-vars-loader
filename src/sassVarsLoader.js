@@ -6,6 +6,7 @@ const readVarsFromTypescriptFiles = require('./utils/readVarsFromTypescriptFiles
 const readSassFiles = require('./utils/readSassFiles')
 const watchFilesForChanges = require('./utils/watchFilesForChanges')
 const convertJsToSass = require('./utils/convertJsToSass')
+const fnTransformKeys = require('./utils/transformKeys')
 
 module.exports = async function(content) {
   this.cacheable()
@@ -17,11 +18,19 @@ module.exports = async function(content) {
 
     await watchFilesForChanges(this, files)
 
-    const vars = {
+    let vars = {
       ...readVarsFromJSONFiles(files),
       ...readVarsFromJavascriptFiles(files),
       ...readVarsFromTypescriptFiles(files),
       ...options.vars,
+    }
+
+    if (options.transformKeys) {
+      if (!Array.isArray(options.transformKeys)) {
+        options.transformKeys = [options.transformKeys]
+      }
+
+      vars = options.transformKeys.reduce((res, fn) => fnTransformKeys(res, fn), {})
     }
 
     const sassVarsString = convertJsToSass(vars, syntax)
