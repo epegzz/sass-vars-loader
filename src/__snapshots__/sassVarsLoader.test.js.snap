@@ -13,17 +13,17 @@ sassFileContents"
 exports[`With single post-processing Returns expected Sass contents 1`] = `"sassFileContents"`;
 
 exports[`With vars from JSON, JS and config Returns expected Sass contents 1`] = `
-"// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsonVars1.json
+"// Vars from jsonVars1.json
 $value1FromJson: foo;
 $loadingOrderTest1: fromJSON;
 $loadingOrderTest2: fromJSON;
 
-// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsVars1.js
+// Vars from jsVars1.js
 $value1FromJs: foo;
 $loadingOrderTest2: fromJS;
 $loadingOrderTest3: fromJS;
 
-// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/tsVars1.ts
+// Vars from tsVars1.ts
 $value1FromTs: tsFoo;
 $loadingOrderTest4: fromTS;
 $loadingOrderTest5: fromTS;
@@ -35,22 +35,22 @@ sassFileContents"
 `;
 
 exports[`With vars from files Returns expected Sass contents 1`] = `
-"// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsonVars1.json
+"// Vars from jsonVars1.json
 $value1FromJson: foo;
 $loadingOrderTest1: fromJSON;
 $loadingOrderTest2: fromJSON;
 
-// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsVars1.js
+// Vars from jsVars1.js
 $value1FromJs: foo;
 $loadingOrderTest2: fromJS;
 $loadingOrderTest3: fromJS;
 
-// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/tsVars1.ts
+// Vars from tsVars1.ts
 $value1FromTs: tsFoo;
 $loadingOrderTest4: fromTS;
 $loadingOrderTest5: fromTS;
 
-// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsonVars2.json
+// Vars from jsonVars2.json
 $value2FromJson: foo;
 
 sassFileContents"

@@ -1,3 +1,4 @@
+const path = require('path')
 const loaderUtils = require('loader-utils')
 const readVarsFromJSONFiles = require('./utils/readVarsFromJSONFiles')
 const readVarsFromJavascriptFiles = require('./utils/readVarsFromJavascriptFiles')
@@ -60,7 +61,7 @@ module.exports = async function(content) {
       }
 
       if (string && !/^[\s\n]*$/.test(string)) {
-        const comment = file ? `Vars from ${file}` : 'Vars from Webpack config'
+        const comment = file ? `Vars from ${path.parse(file).base}` : 'Vars from Webpack config'
 
         return `${result}// ${comment}\n${string}\n\n`
       }
