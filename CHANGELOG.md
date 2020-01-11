@@ -1,3 +1,7 @@
+## [6.0.0]
+### Changed
+- Now respects the order in which the files are specified in the config when loading sass vars.
+
 ## [5.1.0]
 ### Added
 - Added `transformKeys` option to transform the variable / key names in Sass. 

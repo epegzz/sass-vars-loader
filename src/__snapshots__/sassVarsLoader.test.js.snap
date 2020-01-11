@@ -1,60 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`With multi post-processing Returns expected Sass contents 1`] = `
-"
-
-sassFileContents"
-`;
+exports[`With multi post-processing Returns expected Sass contents 1`] = `"sassFileContents"`;
 
 exports[`With sass syntax Returns expected Sass contents 1`] = `
-"
+"// Vars from Webpack config
 $value1FromWebpack: foo
 $nested: (works: (veryWell: true, withoutProblems: indeed))
-sassFileContents"
-`;
-
-exports[`With single post-processing Returns expected Sass contents 1`] = `
-"
 
 sassFileContents"
 `;
+
+exports[`With single post-processing Returns expected Sass contents 1`] = `"sassFileContents"`;
 
 exports[`With vars from JSON, JS and config Returns expected Sass contents 1`] = `
-"
+"// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsonVars1.json
 $value1FromJson: foo;
 $loadingOrderTest1: fromJSON;
-$loadingOrderTest2: fromJS;
+$loadingOrderTest2: fromJSON;
+
+// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsVars1.js
 $value1FromJs: foo;
-$loadingOrderTest3: fromConfig;
+$loadingOrderTest2: fromJS;
+$loadingOrderTest3: fromJS;
+
+// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/tsVars1.ts
 $value1FromTs: tsFoo;
 $loadingOrderTest4: fromTS;
 $loadingOrderTest5: fromTS;
+
+// Vars from Webpack config
+$loadingOrderTest3: fromConfig;
+
 sassFileContents"
 `;
 
 exports[`With vars from files Returns expected Sass contents 1`] = `
-"
+"// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsonVars1.json
 $value1FromJson: foo;
 $loadingOrderTest1: fromJSON;
-$loadingOrderTest2: fromJS;
-$value2FromJson: foo;
+$loadingOrderTest2: fromJSON;
+
+// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsVars1.js
 $value1FromJs: foo;
+$loadingOrderTest2: fromJS;
 $loadingOrderTest3: fromJS;
+
+// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/tsVars1.ts
 $value1FromTs: tsFoo;
 $loadingOrderTest4: fromTS;
 $loadingOrderTest5: fromTS;
+
+// Vars from /Users/epegzz/Projects/@epegzz/sass-vars-loader/src/__mocks__/jsonVars2.json
+$value2FromJson: foo;
+
 sassFileContents"
 `;
 
 exports[`With vars from webpack config Returns expected Sass contents 1`] = `
-"
+"// Vars from Webpack config
 $value1FromWebpack: foo;
 $nested: (works: (veryWell: true, withoutProblems: indeed));
-sassFileContents"
-`;
-
-exports[`Without options Returns expected Sass contents 1`] = `
-"
 
 sassFileContents"
 `;
+
+exports[`Without options Returns expected Sass contents 1`] = `"sassFileContents"`;
