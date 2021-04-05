@@ -7,7 +7,7 @@ const readSassFiles = require('./utils/readSassFiles')
 const watchFilesForChanges = require('./utils/watchFilesForChanges')
 const convertJsToSass = require('./utils/convertJsToSass')
 const transformKeys = require('./utils/transformKeys')
-
+const transformObject = require('./utils/transformObject')
 module.exports = async function(content) {
   this.cacheable()
   const callback = this.async()
@@ -16,7 +16,7 @@ module.exports = async function(content) {
 
     const files = options.files || []
     const syntax = options.syntax || 'scss'
-
+    const transformFileContent = options.transformFileContent
     let transformKeysCallbacks = options.transformKeys
     if (transformKeysCallbacks && !Array.isArray(transformKeysCallbacks)) {
       transformKeysCallbacks = [transformKeysCallbacks]
@@ -28,17 +28,17 @@ module.exports = async function(content) {
     for (const file of files) {
       // Javascript
       if (file.match(/\.js$/i)) {
-        vars.push({ file, object: readVarsFromJavascriptFiles([file]) })
+        vars.push({ file, object: transformObject(readVarsFromJavascriptFiles([file]), transformFileContent) })
       }
 
       // Typescript
       if (file.match(/\.ts$/i)) {
-        vars.push({ file, object: readVarsFromTypescriptFiles([file]) })
+        vars.push({ file, object: transformObject(readVarsFromTypescriptFiles([file]), transformFileContent) })
       }
 
       // JSON
       if (file.match(/\.json$/i)) {
-        vars.push({ file, object: readVarsFromJSONFiles([file]) })
+        vars.push({ file, object: transformObject(readVarsFromJSONFiles([file]), transformFileContent) })
       }
 
       // Sass/Scss
@@ -49,7 +49,7 @@ module.exports = async function(content) {
 
     // Vars from Webpack config
     if (options.vars) {
-      vars.push({ object: options.vars })
+      vars.push({ object: transformObject(options.vars, transformFileContent) })
     }
 
     const varsString = vars.reduce((result, { file, object, string }) => {
