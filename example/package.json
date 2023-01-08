@@ -12,8 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "@epegzz/sass-vars-loader": "file:..",
-    "@webpack-cli/migrate": "^0.1.2",
-    "@webpack-cli/serve": "^0.1.2",
+    "@webpack-cli/migrate": "^0.1.9",
+    "@webpack-cli/serve": "^0.1.8",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^2.1.0",
     "node-sass": "^4.11.0",
